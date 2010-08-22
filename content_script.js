@@ -5,10 +5,11 @@
 * Copyright (c) 2010 Cody Sherman
 * Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 *
-* Description: Adds an unobtrusive "Scroll to Top" link to your page with smooth scrolling.
+* Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top in no time!
+*
 * To install: https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp
 *
-*Support at: http://groups.google.com/group/scroll-to-top-button
+*Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
 *Version: 2.4.2
 -----------------------*/
