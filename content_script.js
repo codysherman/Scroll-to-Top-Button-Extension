@@ -10,7 +10,7 @@
 *
 *Support at: http://groups.google.com/group/scroll-to-top-button
 *
-*Version: 2.4.0
+*Version: 2.4.1
 -----------------------*/
 
 var alreadyHasIt = false;
