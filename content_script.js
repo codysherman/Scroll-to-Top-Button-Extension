@@ -10,9 +10,10 @@
 *
 *Support at: http://groups.google.com/group/scroll-to-top-button
 *
-*Version: 2.4.1
+*Version: 2.4.2
 -----------------------*/
 
+// Checks if the URL already has built-in button.
 var alreadyHasIt = false;
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	if (window.location.href.indexOf('http://www.tumblr.com/dashboard') != -1) {
@@ -33,6 +34,7 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 }
 if ((window == top) && (alreadyHasIt == false)) {
 
+// Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
 var distance = parseInt(response.distance);
@@ -40,10 +42,9 @@ var size = response.size;
 var arrow = response.arrow;
 var scroll = response.scroll;
 var location = response.location;
-
 var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
 
-
+// Actually creates the button on the page.
    $("body").prepend('<img id=theImg />');
 theImg.style.opacity = 0.5;
 theImg.src=imgURL;
@@ -72,12 +73,14 @@ else if (location == "BL") {
 		theImg.style.left = '20px';
 	}
 
-
+// Handles whether the button should be visible at a certain distance down the page.
 $("#theImg").hover(function(){
 		if($(window).scrollTop()>distance){$("#theImg").fadeTo("fast", 1.0);}
 	},function(){
    		if($(window).scrollTop()>distance){$("#theImg").fadeTo("medium", 0.5);}
 	});
+
+// Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
    $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance});
  });
 

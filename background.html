@@ -1,4 +1,6 @@
 <script>
+
+// Creates options defaults in case user hasn't set them yet.
   if (!localStorage["scroll_speed"]) {
     localStorage["scroll_speed"] = 1000;
   }
@@ -18,6 +20,7 @@
     localStorage["location"] = "TR";
   }
 
+// Message passer to give [LocalStorage] settings to contentscript.js which is not allowed access to [LocalStorage].
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.greeting == "settings")
