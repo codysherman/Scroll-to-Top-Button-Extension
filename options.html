@@ -1,0 +1,249 @@
+<html>
+<head><title>Scroll to Top Button Options</title>
+
+
+
+<link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<script type="text/javascript">
+
+// Restores default settings.
+function defaults() {
+  localStorage.clear();
+  restore_options();
+  save_options();
+}
+
+// Saves options to localStorage.
+function save_options() {
+  var select = document.getElementById("speed");
+  var speed = select.children[select.selectedIndex].value;
+  localStorage["scroll_speed"] = speed;
+
+  var select = document.getElementById("distance");
+  var distance = select.children[select.selectedIndex].value;
+  localStorage["distance_length"] = distance;
+
+  var select = document.getElementById("buttonsize");
+  var size = select.children[select.selectedIndex].value;
+  localStorage["size"] = size;
+
+  var select = document.getElementById("buttoncolor");
+  var color = select.children[select.selectedIndex].value;
+  localStorage["arrow"] = color;
+
+  var select = document.getElementById("scroll");
+  var scroll = select.children[select.selectedIndex].value;
+  localStorage["scroll"] = scroll;
+
+  var select = document.getElementById("location");
+  var location = select.children[select.selectedIndex].value;
+  localStorage["location"] = location;
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options Saved.";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 2500);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var favorite = localStorage["scroll_speed"];
+  if (!favorite) {
+    favorite = 1000;
+  }
+  var select = document.getElementById("speed");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite) {
+      child.selected = "true";
+      break;
+    }
+  }
+  var favorite2 = localStorage["distance_length"];
+  if (!favorite2) {
+    favorite2 = 400;
+  }
+  var select = document.getElementById("distance");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite2) {
+      child.selected = "true";
+      break;
+    }
+  }
+  var favorite3 = localStorage["size"];
+  if (!favorite3) {
+    favorite3 = "50px";
+  }
+  var select = document.getElementById("buttonsize");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite3) {
+      child.selected = "true";
+      break;
+    }
+  }
+  var favorite4 = localStorage["arrow"];
+  if (!favorite4) {
+    favorite4 = "arrow_blue";
+  }
+  var select = document.getElementById("buttoncolor");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite4) {
+      child.selected = "true";
+      break;
+    }
+  }
+  var favorite5 = localStorage["scroll"];
+  if (!favorite5) {
+    favorite5 = "jswing";
+  }
+  var select = document.getElementById("scroll");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite5) {
+      child.selected = "true";
+      break;
+    }
+  }
+ var favorite6 = localStorage["location"];
+  if (!favorite6) {
+    favorite6 = "TR";
+  }
+  var select = document.getElementById("location");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite6) {
+      child.selected = "true";
+      break;
+    }
+  }
+  save_options();
+}
+
+function report(option) {
+	if (option == 1) {
+		_gaq.push(['_trackEvent', 'Scroll Speed', localStorage["scroll_speed"]]);
+	}
+	else if (option == 2) {
+		_gaq.push(['_trackEvent', 'Distance to Scroll', localStorage["distance_length"]]);
+	}
+	else if (option == 3) {
+		_gaq.push(['_trackEvent', 'Button Size', localStorage["size"]]);
+	}
+	else if (option == 4) {
+		_gaq.push(['_trackEvent', 'Button Kind', localStorage["arrow"]]);
+	}
+	else if (option == 5) {
+		_gaq.push(['_trackEvent', 'Scroll Type', localStorage["scroll"]]);
+	}
+	else if (option == 6) {
+		_gaq.push(['_trackEvent', 'Button Location', localStorage["location"]]);
+	}
+}
+
+
+</script>
+
+<body onload="restore_options()">
+
+<script>
+
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-17657222-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = 'https://ssl.google-analytics.com/ga.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+     })();
+</script>
+
+<Div id="options">
+
+<img style="float:left;margin-top:2px" src="icon32.png" alt="STTB icon" />
+<p class="header">Scroll to Top Button Options</p>
+
+<a href="http://scrolltotopbutton.tumblr.com/" target="_blank">View the Release Notes</a><br/><br/>
+
+Scroll speed (The further down, the faster it goes):
+<select id="speed" onchange="save_options();report(1)">
+ <option value="2000">Slow</option>
+ <option value="1000">Fast</option>
+ <option value="100">Faster</option>
+ <option value="1">Fastest</option>
+</select>
+
+<br/>
+How far down the page before button appears:
+<select id="distance" onchange="save_options();report(2)">;
+ <option value="400">Medium</option>
+ <option value="100">Barely Any</option>
+ <option value="275">A little</option>
+ <option value="700">More than average</option>
+ <option value="1000">A lot</option>
+ <option value="2500">A ton</option>
+</select>
+
+<br/>
+Button size:
+<select id="buttonsize" onchange="save_options();report(3)">
+ <option value="35px">35x35 pixels</option>
+ <option value="40px">40x40 pixels</option>
+ <option value="45px">45x45 pixels</option>
+ <option value="50px">50x50 pixels</option>
+</select>
+
+<br/>
+Button color/style:
+<select id="buttoncolor" onchange="save_options();report(4)">
+ <option value="arrow_blue">Tumblr Blue</option>
+ <option value="arrow_grey">Grey</option>
+ <option value="" disabled="disabled">Colors</option>
+ <option value="arrow_red">Red</option>
+ <option value="arrow_orange">Orange</option>
+ <option value="arrow_yellow">Yellow</option>
+ <option value="arrow_green">Green</option>
+ <option value="arrow_blue2">Blue</option>
+ <option value="arrow_purple">Purple</option>
+ <option value="arrow_pink">Pink</option>
+ <option value="" disabled="disabled">Arrow Only</option>
+ <option value="arrow_only_blue">Tumblr Blue - Arrow Only</option>
+ <option value="arrow_only_grey">Grey - Arrow Only</option>
+ <option value="" disabled="disabled">Alternate Designs</option>
+ <option value="arrow_pixel_blue">Pixel Design</option>
+</select>
+
+<br/>
+Page bounce:
+<select id="scroll" onchange="save_options();report(5)">
+ <option value="jswing">Off</option>
+ <option value="easeOutBounce">On</option>
+</select>
+
+<br/>
+Button Location:
+<select id="location" onchange="save_options();report(6)">
+ <option value="TR">Top Right</option>
+ <option value="TL">Top Left</option>
+ <option value="BR">Bottom Right</option>
+ <option value="BL">Bottom Left</option>
+</select>
+
+<br/>
+<button style="float:left" onclick="defaults()">Restore Defaults</button>
+<p id="status" style="float:left; font-size:.5em; line-height:.5"></p>
+<br/>
+<p id="Byline" style="clear:left">By <a href="http://codysherman.com/" target="_blank">Cody Sherman</a></p>
+<br/>
+<p style="font-size:.9em">If you like this extension, please feel free to give a rating or request a feature <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">here.</a></p>
+
+</div>
+</body>
+</html>
