@@ -126,6 +126,7 @@ function restore_options() {
   save_options();
 }
 
+// Reports events to Google Analytics.
 function report(option) {
 	if (option == 1) {
 		_gaq.push(['_trackEvent', 'Scroll Speed', localStorage["scroll_speed"]]);
@@ -177,7 +178,7 @@ Scroll speed (The further down, the faster it goes):
  <option value="2000">Slow</option>
  <option value="1000">Fast</option>
  <option value="100">Faster</option>
- <option value="1">Fastest</option>
+ <option value="1">Fastest (Instant)</option>
 </select>
 
 <br/>
@@ -242,7 +243,9 @@ Button Location:
 <br/>
 <p id="Byline" style="clear:left">By <a href="http://codysherman.com/" target="_blank">Cody Sherman</a></p>
 <br/>
-<p style="font-size:.9em">If you like this extension, please feel free to give a rating or request a feature <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">here.</a></p>
+<p style="font-size:.9em">If you like this extension, please feel free to give a rating or request a feature <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">here.</a></p><br/><br/>
+
+<a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank">View the source code.</a>
 
 </div>
 </body>
