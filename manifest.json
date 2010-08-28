@@ -12,6 +12,6 @@
     { "matches": ["http://*/*", "https://*/*"], "js": ["scrolling_code/jquery-1.4.2.min.js", "scrolling_code/jquery.easing.js", "scrolling_code/jquery.scroll.pack.js", "content_script.js"] }
   ],
   "permissions": [
-	"tabs"
+	"tabs", "contextMenus"
   ]
 }
