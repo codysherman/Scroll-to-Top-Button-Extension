@@ -111,7 +111,7 @@ $("#theImg2").hover(function(){
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, direction:"down"});
+   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:0, direction:"down"});
  });
 
 };
