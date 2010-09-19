@@ -21,11 +21,11 @@
 
 	$(this).hide().removeAttr("href").css("cursor","pointer");
 
-	if($(window).scrollTop()>o.start){
+	if($(window).scrollTop()>=o.start){
 
 	$(this).fadeIn("slow");}$(window).scroll(function(){
 
-	if($(window).scrollTop()>o.start){
+	if($(window).scrollTop()>=o.start){
 
 	$(scrollDiv).fadeIn("slow");}else{
 	$(scrollDiv).fadeOut("slow");
