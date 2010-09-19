@@ -33,12 +33,12 @@
 
 
 
-	if($(window).scrollTop()>='1000'){
+	if($(window).scrollTop()>='300'){
 	$("#theImg").rotateAnimation(0);
 	o.direction="up";
 	};
 
-	if($(window).scrollTop()<'1000'){
+	if($(window).scrollTop()<'300'){
 	$("#theImg").rotateAnimation(180);
 	o.direction="down";
 	};
