@@ -29,7 +29,17 @@
 
 	$(scrollDiv).fadeIn("slow");}else{
 	$(scrollDiv).fadeOut("slow");
-	}});
+	}
+
+	// var halfway = 'document.body.clientHeight';
+if($(window).scrollTop()>='500'){
+$("#theImg").rotateAnimation(-180);
+};
+
+});
+
+
+
 
 	if(o.direction=="up"){
 		scrollDiv.click(function(event){

@@ -101,6 +101,8 @@ theImg2.style.padding = '0px';
 $('#theImg2').rotate(-180);
 
 
+
+
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
    $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, direction:"up"});
 
