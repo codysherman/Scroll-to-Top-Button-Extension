@@ -31,10 +31,20 @@
 	$(scrollDiv).fadeOut("slow");
 	}});
 
-	scrollDiv.click(function(event){
-$("html, body").animate({scrollTop:"0px"},o.speed,o.ease);
-$("#theImg").fadeTo("medium", 0.5);
-});
+	if(o.direction=="up"){
+		scrollDiv.click(function(event){
+		$("html, body").animate({scrollTop:"0"},o.speed,o.ease);
+		$("#theImg").fadeTo("medium", 0.5);
+		});
+	};
+
+	if(o.direction=="down"){
+		scrollDiv.click(function(event){
+		$("html, body").animate({scrollTop:document.body.clientHeight},o.speed,o.ease);
+		$("#theImg").fadeTo("medium", 0.5);
+		});
+	};
+
 });
 }
 });

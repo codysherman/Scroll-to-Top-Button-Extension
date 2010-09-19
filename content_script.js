@@ -75,17 +75,44 @@ else if (location == "BL") {
 	}
 
 // Handles whether the button should be visible at a certain distance down the page.
-$("#theImg").hover(function(){
+$("#theImg2").hover(function(){
 		if($(window).scrollTop()>distance){$("#theImg").fadeTo("fast", 1.0);}
 	},function(){
    		if($(window).scrollTop()>distance){$("#theImg").fadeTo("medium", 0.5);}
 	});
 
+// Actually creates the button on the page.
+   $("body").prepend('<img id=theImg2 />');
+theImg2.style.opacity = 0.5;
+theImg2.src=imgURL;
+theImg2.style.position = 'fixed';
+theImg2.style.width = size;
+theImg2.style.height = 'auto';
+theImg2.style.display = 'none';
+theImg2.style.zIndex = 2147483647;
+theImg2.style.border = '0px';
+theImg2.style.margin = '0px';
+theImg2.style.padding = '0px';
+
+		theImg2.style.bottom = '20px';
+		theImg2.style.right = '20px';
+
+
+
+// Handles whether the button should be visible at a certain distance down the page.
+$("#theImg2").hover(function(){
+		if($(window).scrollTop()>distance){$("#theImg2").fadeTo("fast", 1.0);}
+	},function(){
+   		if($(window).scrollTop()>distance){$("#theImg2").fadeTo("medium", 0.5);}
+	});
+
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance});
+   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, direction:"up"});
+
+
+// Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
+   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, direction:"down"});
  });
-
-
 
 };
 
