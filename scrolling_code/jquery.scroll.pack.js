@@ -31,34 +31,40 @@
 	$(scrollDiv).fadeOut("slow");
 	}
 
-	// var halfway = 'document.body.clientHeight';
-if($(window).scrollTop()>='1000'){
-$("#theImg").rotateAnimation(180);
-};
 
-	var halfway = 'document.body.clientHeight';
+
+	if($(window).scrollTop()>='1000'){
+	$("#theImg").rotateAnimation(0);
+	o.direction="up";
+	};
+
 	if($(window).scrollTop()<'1000'){
-	$("#theImg").rotateAnimation(-180);
+	$("#theImg").rotateAnimation(180);
+	o.direction="down";
 	};
 
 });
 
 
 
-
-	if(o.direction=="up"){
-		scrollDiv.click(function(event){
+	scrollDiv.click(function(event){
+		if(o.direction=="up"){
 		$("html, body").animate({scrollTop:"0"},o.speed,o.ease);
 		$("#theImg").fadeTo("medium", 0.5);
-		});
-	};
+		};
 
-	if(o.direction=="down"){
+		if(o.direction=="down"){
+		$("html, body").animate({scrollTop:document.body.clientHeight},o.speed,o.ease);
+		$("#theImg").fadeTo("medium", 0.5);
+		};
+	});
+
+	/*if($(window).scrollTop()<'1000'){
 		scrollDiv.click(function(event){
 		$("html, body").animate({scrollTop:document.body.clientHeight},o.speed,o.ease);
 		$("#theImg").fadeTo("medium", 0.5);
 		});
-	};
+	};*/
 
 });
 }
