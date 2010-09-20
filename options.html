@@ -4,7 +4,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="/style.css">
-
+<script type="text/javascript" src="/scrolling_code/jquery-1.4.2.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
 </style></head>
 <script type="text/javascript">
@@ -198,7 +198,7 @@ Scroll Speed:
 </select>
 
 <p>
-Appear/Flip Distance:
+<div id="textChange">Appear Distance:</div>
 <select id="distance" onChange="save_options();report(2)">;
  <option value="400">Medium</option>
  <option value="100">Barely Any</option>
@@ -256,6 +256,20 @@ Button Location:
 </select>
 </p>
 <p>
+<script type="text/javascript">
+$(document).ready(function(){ $("#stbb").change(function() {
+var down=$("#stbb option:selected").text();
+    if(down=="On"){
+        $("#textChange").html("Flip Distance:");
+        }
+        else
+            {
+            $("#textChange").html("Appear Distance:");
+            }
+    });
+});
+    </script>
+
 Scroll to Bottom Button:
 <select id="stbb" onChange="save_options();report(7)">
  <option value="off">Off</option>
