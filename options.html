@@ -198,7 +198,7 @@ Scroll Speed:
 </select>
 
 <p>
-Appear/Flip Distance:
+<div id=textChange">Appear Distance:</div>
 <select id="distance" onChange="save_options();report(2)">;
  <option value="400">Medium</option>
  <option value="100">Barely Any</option>
@@ -260,11 +260,11 @@ Button Location:
 $(document).ready(function(){ $("#stbb").change(function() {
 var down=$("#stbb option:selected").text();
     if(down=="On"){
-        $("#textChange").html("How far down the page before button rotates");
+        $("#textChange").html("Flip Distance");
         }
         else
             {
-            $("#textChange").html("How far down the page before button appears");
+            $("#textChange").html("Appear Distance");
             }
     });
 });
