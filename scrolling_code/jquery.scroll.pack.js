@@ -28,7 +28,7 @@
 	};
 
 	if($(window).scrollTop()<'300'){
-		$("#theImg").rotateAnimation(180);
+		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };
@@ -50,7 +50,7 @@ if(o.stbb=="on"){
 	};
 
 	if($(window).scrollTop()<'300'){
-		$("#theImg").rotateAnimation(180);
+		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };

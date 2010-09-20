@@ -49,7 +49,7 @@ var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
 // Actually creates the button on the page.
    $("body").prepend('<img id=theImg />');
 	if(stbb=="on"){
-	$("#theImg").rotate(180);
+	$("#theImg").rotate(-180);
 	};
 theImg.style.opacity = 0.5;
 theImg.src=imgURL;
