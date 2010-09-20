@@ -91,12 +91,16 @@ else if (location == "BC") {
 		theImg.style.margin = '0px -25px 0px 0px';
 	}
 
-// Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-  // $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, direction:"up"});
+if(stbb=="on"){distance=0;};
 
+$("#theImg").hover(function(){
+		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("fast", 1.0);}
+	},function(){
+   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", 0.5);}
+	});
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:0, direction:"down", stbb:stbb});
+   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb});
 
  });
 
