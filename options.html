@@ -5,7 +5,8 @@
 
 <link rel="stylesheet" type="text/css" href="/style.css">
 
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
+</style></head>
 <script type="text/javascript">
 
 // Restores default settings.
@@ -170,7 +171,7 @@ function report(option) {
 
 </script>
 
-<body onload="restore_options()">
+<body onLoad="restore_options()">
 
 <script>/* 
 
@@ -186,23 +187,19 @@ function report(option) {
  */</script>
 
 <Div id="options">
-
-<img style="float:left;margin-top:2px" src="icons/icon32.png" alt="STTB icon" />
-<p class="header">Scroll to Top Button Options</p>
-
-<a href="http://scrolltotopbutton.tumblr.com/" target="_blank">View the Release Notes</a><br/><br/>
-
-Scroll speed (The further down, the faster it goes):
-<select id="speed" onchange="save_options();report(1)">
+	<div id="headerTitle"></div>
+	<div id="content">
+Scroll Speed:
+<select id="speed" onChange="save_options();report(1)">
  <option value="2000">Slow</option>
  <option value="1000">Fast</option>
  <option value="100">Faster</option>
  <option value="1">Fastest (Instant)</option>
 </select>
 
-<br/>
-How far down the page before button appears:
-<select id="distance" onchange="save_options();report(2)">;
+<p>
+Appear/Flip Distance:
+<select id="distance" onChange="save_options();report(2)">;
  <option value="400">Medium</option>
  <option value="100">Barely Any</option>
  <option value="275">A little</option>
@@ -210,19 +207,19 @@ How far down the page before button appears:
  <option value="1000">A lot</option>
  <option value="2500">A ton</option>
 </select>
-
-<br/>
-Button size:
-<select id="buttonsize" onchange="save_options();report(3)">
+</p>
+<p>
+Button Size:
+<select id="buttonsize" onChange="save_options();report(3)">
  <option value="35px">35x35 pixels</option>
  <option value="40px">40x40 pixels</option>
  <option value="45px">45x45 pixels</option>
  <option value="50px">50x50 pixels</option>
 </select>
-
-<br/>
-Button color/style:
-<select id="buttoncolor" onchange="save_options();report(4)">
+</p>
+<p>
+Button Design:
+<select id="buttoncolor" onChange="save_options();report(4)">
  <option value="arrow_blue">Tumblr Blue</option>
  <option value="arrow_grey">Grey</option>
  <option value="" disabled="disabled">Colors</option>
@@ -239,17 +236,17 @@ Button color/style:
  <option value="" disabled="disabled">Alternate Designs</option>
  <option value="arrow_pixel_blue">Pixel Design</option>
 </select>
-
-<br/>
-Page bounce:
-<select id="scroll" onchange="save_options();report(5)">
+</p>
+<p>
+Page Bounce:
+<select id="scroll" onChange="save_options();report(5)">
  <option value="jswing">Off</option>
  <option value="easeOutBounce">On</option>
 </select>
-
-<br/>
+</p>
+<p>
 Button Location:
-<select id="location" onchange="save_options();report(6)">
+<select id="location" onChange="save_options();report(6)">
  <option value="TR">Top Right</option>
  <option value="TL">Top Left</option>
  <option value="TC">Top Center</option>
@@ -257,24 +254,28 @@ Button Location:
  <option value="BL">Bottom Left</option>
  <option value="BC">Bottom Center</option>
 </select>
-
-<br/>
+</p>
+<p>
 Scroll to Bottom Button:
-<select id="stbb" onchange="save_options();report(7)">
+<select id="stbb" onChange="save_options();report(7)">
  <option value="off">Off</option>
  <option value="on">On</option>
 </select>
-
-<br/>
-<button style="float:left" onclick="defaults()">Restore Defaults</button>
+</p>
+<button id="restore" onClick="defaults()"></button>
 <p id="status" style="float:left; font-size:.5em; line-height:.5"></p>
 <br/>
-<p id="Byline" style="clear:left">By <a href="http://codysherman.com/" target="_blank">Cody Sherman</a></p>
 <br/>
-<p style="font-size:.9em">If you like this extension, please feel free to give a rating or request a feature <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">here.</a></p><br/><br/>
-
-<a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank">View the source code.</a>
-
+<br/>
+<br/>
+<p>If you like this extension, please feel free to give a rating or request a feature <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">here.</a></p>
+<br/>
+<div id="bottomNav">
+<a href="http://scrolltotopbutton.tumblr.com/" target="_blank"><div id="release"></div></a>
+<a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank"><div id="source"></div></a>
+<a href="http://codysherman.com/" target="_blank"><div id="cody"></div></a>
+</div>
+	</div>
 </div>
 </body>
 </html>
