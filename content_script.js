@@ -43,11 +43,14 @@ var size = response.size;
 var arrow = response.arrow;
 var scroll = response.scroll;
 var location = response.location;
+var stbb = response.stbb;
 var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
 
 // Actually creates the button on the page.
    $("body").prepend('<img id=theImg />');
+	if(stbb=="on"){
 	$("#theImg").rotate(180);
+	};
 theImg.style.opacity = 0.5;
 theImg.src=imgURL;
 theImg.style.position = 'fixed';
@@ -56,23 +59,36 @@ theImg.style.height = 'auto';
 theImg.style.display = 'none';
 theImg.style.zIndex = 2147483647;
 theImg.style.border = '0px';
-theImg.style.margin = '0px';
 theImg.style.padding = '0px';
 if (location == "TR") {
 		theImg.style.top = '20px';
 		theImg.style.right = '20px';
+		theImg.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "TL") {
 		theImg.style.top = '20px';
 		theImg.style.left = '20px';
+		theImg.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "BR") {
 		theImg.style.bottom = '20px';
 		theImg.style.right = '20px';
+		theImg.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "BL") {
 		theImg.style.bottom = '20px';
 		theImg.style.left = '20px';
+		theImg.style.margin = '0px 0px 0px 0px';
+	}
+else if (location == "TC") {
+		theImg.style.top = '20px';
+		theImg.style.right = '50%';
+		theImg.style.margin = '0px -25px 0px 0px';
+	}
+else if (location == "BC") {
+		theImg.style.bottom = '20px';
+		theImg.style.right = '50%';
+		theImg.style.margin = '0px -25px 0px 0px';
 	}
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
@@ -80,7 +96,7 @@ else if (location == "BL") {
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:0, direction:"down"});
+   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:0, direction:"down", stbb:stbb});
 
  });
 

@@ -41,6 +41,10 @@ function save_options() {
   var location = select.children[select.selectedIndex].value;
   localStorage["location"] = location;
 
+  var select = document.getElementById("stbb");
+  var stbb = select.children[select.selectedIndex].value;
+  localStorage["stbb"] = stbb;
+
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
   status.innerHTML = "Options Saved.";
@@ -123,6 +127,18 @@ function restore_options() {
       break;
     }
   }
+ var favorite7 = localStorage["stbb"];
+  if (!favorite7) {
+    favorite6 = "off";
+  }
+  var select = document.getElementById("stbb");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite7) {
+      child.selected = "true";
+      break;
+    }
+  }
   save_options();
 }
 
@@ -145,6 +161,9 @@ function report(option) {
 	}
 	else if (option == 6) {
 		_gaq.push(['_trackEvent', 'Button Location', localStorage["location"]]);
+	}
+	else if (option == 7) {
+		_gaq.push(['_trackEvent', 'Button Location', localStorage["stbb"]]);
 	}
 }
 
@@ -233,8 +252,17 @@ Button Location:
 <select id="location" onchange="save_options();report(6)">
  <option value="TR">Top Right</option>
  <option value="TL">Top Left</option>
+ <option value="TC">Top Center</option>
  <option value="BR">Bottom Right</option>
  <option value="BL">Bottom Left</option>
+ <option value="BC">Bottom Center</option>
+</select>
+
+<br/>
+Scroll to Bottom Button:
+<select id="stbb" onchange="save_options();report(7)">
+ <option value="off">Off</option>
+ <option value="on">On</option>
 </select>
 
 <br/>

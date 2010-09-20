@@ -19,12 +19,15 @@
   if (!localStorage["location"]) {
     localStorage["location"] = "TR";
   }
+  if (!localStorage["stbb"]) {
+    localStorage["stbb"] = "off";
+  }
 
 // Message passer to give [LocalStorage] settings to content_script.js which is not allowed access to [LocalStorage].
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.greeting == "settings")
-      sendResponse({speed: localStorage["scroll_speed"], distance: localStorage["distance_length"], size: localStorage["size"], arrow: localStorage["arrow"], scroll: localStorage["scroll"], location: localStorage["location"]});
+      sendResponse({speed: localStorage["scroll_speed"], distance: localStorage["distance_length"], size: localStorage["size"], arrow: localStorage["arrow"], scroll: localStorage["scroll"], location: localStorage["location"], stbb: localStorage["stbb"]});
     else
       sendResponse({}); // snub them.
   });
