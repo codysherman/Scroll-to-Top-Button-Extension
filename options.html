@@ -256,6 +256,20 @@ Button Location:
 </select>
 </p>
 <p>
+<script type="text/javascript">
+$(document).ready(function(){ $("#stbb").change(function() {
+var down=$("#stbb option:selected").text();
+    if(down=="On"){
+        $("#textChange").html("How far down the page before button rotates");
+        }
+        else
+            {
+            $("#textChange").html("How far down the page before button appears");
+            }
+    });
+});
+    </script>
+
 Scroll to Bottom Button:
 <select id="stbb" onChange="save_options();report(7)">
  <option value="off">Off</option>
