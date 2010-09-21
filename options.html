@@ -169,8 +169,7 @@ function report(option) {
 }
 
 function textChange(){
-var down=localStorage["stbb"];
-    if(down=="on"){
+    if(localStorage["stbb"]=="on"){
         $("#textChange").html("Flip Distance:");
         }
         else
@@ -207,7 +206,7 @@ Scroll Speed:
 </select>
 
 <p>
-<div id="textChange">Appear Distance:</div>
+<div id="textChange" style="float:left;padding-right:4px;">Appear Distance:</div>
 <select id="distance" onChange="save_options();report(2)">;
  <option value="100">Barely Any</option>
  <option value="275">A little</option>
@@ -271,11 +270,9 @@ Scroll to Bottom Button:
  <option value="on">On</option>
 </select>
 </p>
-<script type="text/javascript">
-$(document).ready(textChange());
-    </script>
+<script type="text/javascript">$(document).ready(textChange());</script>
 <button id="restore" onClick="defaults()"></button>
-<p id="status" style="float:left; font-size:.5em; line-height:.5"></p>
+<p id="status" style="float:left; font-size:.9em; line-height:.5"></p>
 <br/>
 <br/>
 <br/>
