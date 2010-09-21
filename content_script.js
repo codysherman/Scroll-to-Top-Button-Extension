@@ -33,7 +33,9 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 		$('#return_to_top').remove();
 	}
 }
-if (window == top) {
+
+alert("Window: " + $(window).height() + "and Doc: " + $(document).height());
+if ((window == top) && ($(window).height()<$(document).height())) {
 
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {

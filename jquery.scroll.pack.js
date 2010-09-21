@@ -57,28 +57,27 @@ if(o.stbb=="on"){
 
 });
 
-
 if(o.stbb=="on"){
 	scrollDiv.click(function(event){
 		if(o.direction=="up"){
 		$("html, body").animate({scrollTop:"0"},o.speed,o.ease);
 		$("#theImg").fadeTo("medium", 0.5);
-		};
+		}
 
 		if(o.direction=="down"){
-		$("html, body").animate({scrollTop:document.body.clientHeight},o.speed,o.ease);
+		$("html, body").animate({scrollTop:$(document).height()},o.speed,o.ease);
 		$("#theImg").fadeTo("medium", 0.5);
-		};
-	});
-};
+		}
+	})
+}
 
 
-if(o.stbb=="off"){
+else if(o.stbb=="off"){
 	scrollDiv.click(function(event){
 		$("html, body").animate({scrollTop:"0"},o.speed,o.ease);
 		$("#theImg").fadeTo("medium", 0.5);
-	});
-};
+	})
+}
 
 });
 }
