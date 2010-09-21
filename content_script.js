@@ -13,7 +13,7 @@
 *
 *Version: 3.0.0
 -----------------------*/
-
+/*
 // Checks if the URL already has built-in button.
 var alreadyHasIt = false;
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
@@ -35,7 +35,14 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 }
 
 if ((window == top) && ($(window).height()<$(document).height())) {
+loadSTTB="true";
+}
 
+if ((window == top) && (window.location.href.indexOf('facebook.com') != -1)) {
+loadSTTB="true";
+}
+
+if (loadSTTB=="true") {
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
@@ -106,5 +113,5 @@ $("#theImg").hover(function(){
 
  });
 
-};
+};*/
 

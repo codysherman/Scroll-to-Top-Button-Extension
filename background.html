@@ -1,7 +1,7 @@
 <script>
 
   if (localStorage["latest"]!="1"){
-  chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/latest-version'});
+  chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/latest',selected:false});
   localStorage["latest"]="1";
   }
 
