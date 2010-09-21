@@ -22,6 +22,12 @@
   if (!localStorage["stbb"]) {
     localStorage["stbb"] = "off";
   }
+  if (localStorage["distance_length"]==450) {
+    localStorage["distance_length"] = 400;
+  }
+  if (localStorage["distance_length"]==350) {
+    localStorage["distance_length"] = 400;
+  }
 
 // Message passer to give [LocalStorage] settings to content_script.js which is not allowed access to [LocalStorage].
 chrome.extension.onRequest.addListener(
@@ -33,3 +39,15 @@ chrome.extension.onRequest.addListener(
   });
 
 </script>
+
+<script> 
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-17657222-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = 'https://ssl.google-analytics.com/ga.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+     })();
+ </script>
