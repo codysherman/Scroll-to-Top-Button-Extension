@@ -11,6 +11,7 @@
 
 // Restores default settings.
 function defaults() {
+  latestPast=localStorage["latest"];
   localStorage.clear();
   restore_options();
   save_options();
@@ -56,7 +57,7 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-  localStorage["latest"]="1";
+  localStorage["latest"]=latestPass;
   var favorite = localStorage["scroll_speed"];
   if (!favorite) {
     favorite = 1000;
@@ -172,35 +173,20 @@ function report(option) {
 function textChange(){
 	if(localStorage["stbb"]=="on"){
         	$("#textChange").html("Flip Distance:");
-		var favorite2 = 275;
-		var select = document.getElementById("distance");
-		for (var i = 0; i < select.children.length; i++) {
-			var child = select.children[i];
-			if (child.value == favorite2) {
-				child.selected = "true";
-				break;
-			}
-		}
+		localStorage["distance_length"] = 275;
+		restore_options();
 	}
         else{
 		$("#textChange").html("Appear Distance:");
-		var favorite2 = 400;
-		var select = document.getElementById("distance");
-		for (var i = 0; i < select.children.length; i++) {
-			var child = select.children[i];
-			if (child.value == favorite2) {
-				child.selected = "true";
-				break;
-			}
-		}		
+		localStorage["distance_length"] = 400;
+		restore_options();	
 	}
 }
 </script>
 
 <body onLoad="restore_options()">
 
-<script> 
-
+<script>
      var _gaq = _gaq || [];
      _gaq.push(['_setAccount', 'UA-17657222-1']);
      _gaq.push(['_trackPageview']);
