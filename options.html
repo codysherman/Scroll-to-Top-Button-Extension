@@ -51,11 +51,12 @@ function save_options() {
   status.innerHTML = "Options Saved.";
   setTimeout(function() {
     status.innerHTML = "";
-  }, 2500);
+  }, 3000);
 }
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
+  localStorage["latest"]="1";
   var favorite = localStorage["scroll_speed"];
   if (!favorite) {
     favorite = 1000;
@@ -169,13 +170,30 @@ function report(option) {
 }
 
 function textChange(){
-    if(localStorage["stbb"]=="on"){
-        $("#textChange").html("Flip Distance:");
-        }
-        else
-            {
-            $("#textChange").html("Appear Distance:");
-            }
+	if(localStorage["stbb"]=="on"){
+        	$("#textChange").html("Flip Distance:");
+		var favorite2 = 275;
+		var select = document.getElementById("distance");
+		for (var i = 0; i < select.children.length; i++) {
+			var child = select.children[i];
+			if (child.value == favorite2) {
+				child.selected = "true";
+				break;
+			}
+		}
+	}
+        else{
+		$("#textChange").html("Appear Distance:");
+		var favorite2 = 400;
+		var select = document.getElementById("distance");
+		for (var i = 0; i < select.children.length; i++) {
+			var child = select.children[i];
+			if (child.value == favorite2) {
+				child.selected = "true";
+				break;
+			}
+		}		
+	}
 }
 </script>
 
@@ -197,6 +215,14 @@ function textChange(){
 <Div id="options">
 	<div id="headerTitle"></div>
 	<div id="content">
+<p>
+Scroll to Bottom Button:
+<select id="stbb" onChange="save_options();textChange();report(7)">
+ <option value="off">Off</option>
+ <option value="on">On</option>
+</select>
+</p>
+<p>
 Scroll Speed:
 <select id="speed" onChange="save_options();report(1)">
  <option value="2000">Slow</option>
@@ -204,7 +230,7 @@ Scroll Speed:
  <option value="100">Faster</option>
  <option value="1">Fastest (Instant)</option>
 </select>
-
+</p>
 <p>
 <div id="textChange" style="float:left;padding-right:4px;">Appear Distance:</div>
 <select id="distance" onChange="save_options();report(2)">;
@@ -263,16 +289,9 @@ Button Location:
  <option value="BC">Bottom Center</option>
 </select>
 </p>
-<p>
-Scroll to Bottom Button:
-<select id="stbb" onChange="save_options();textChange();report(7)">
- <option value="off">Off</option>
- <option value="on">On</option>
-</select>
-</p>
 <script type="text/javascript">$(document).ready(textChange());</script>
 <button id="restore" onClick="defaults()"></button>
-<p id="status" style="float:left; font-size:.9em; line-height:.5"></p>
+<p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
 <br/>
 <br/>
 <br/>

@@ -1,5 +1,10 @@
 <script>
 
+  if (localStorage["latest"]!="1"){
+  chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/latest-version'});
+  localStorage["latest"]="1";
+  }
+
 // Creates options defaults in case user hasn't set them yet.
   if (!localStorage["scroll_speed"]) {
     localStorage["scroll_speed"] = 1000;
