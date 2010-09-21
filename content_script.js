@@ -34,7 +34,6 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	}
 }
 
-alert("Window: " + $(window).height() + "and Doc: " + $(document).height());
 if ((window == top) && ($(window).height()<$(document).height())) {
 
 // Asks background.html for [LocalStorage] settings.
