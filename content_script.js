@@ -18,22 +18,22 @@
 var alreadyHasIt = false;
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	if (window.location.href.indexOf('http://www.tumblr.com/dashboard') != -1) {
-		alreadyHasIt = true;
+		$('#return_to_top').remove();
 	}
 	else if (window.location.href.indexOf('http://www.tumblr.com/tumblelog/') != -1) {
-		alreadyHasIt = true;
+		$('#return_to_top').remove();
 	}
 	else if (window.location.href.indexOf('http://www.tumblr.com/tagged/') != -1) {
-		alreadyHasIt = true;
+		$('#return_to_top').remove();
 	}
 	else if (window.location.href.indexOf('http://www.tumblr.com/liked/by/') != -1) {
-		alreadyHasIt = true;
+		$('#return_to_top').remove();
 	}
 	else if (window.location.href.indexOf('http://www.tumblr.com/likes') != -1) {
-		alreadyHasIt = true;
+		$('#return_to_top').remove();
 	}
 }
-if ((window == top) && (alreadyHasIt == false)) {
+if (window == top) {
 
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
