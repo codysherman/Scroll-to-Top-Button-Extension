@@ -22,12 +22,12 @@
 	$(this).hide().removeAttr("href").css("cursor","pointer");
 
 	if(o.stbb=="on"){
-	if($(window).scrollTop()>='300'){
+	if($(window).scrollTop()>=o.flip){
 		$("#theImg").rotateAnimation(0);
 		o.direction="up";
 	};
 
-	if($(window).scrollTop()<'300'){
+	if($(window).scrollTop()<o.flip){
 		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
@@ -44,12 +44,12 @@
 
 
 if(o.stbb=="on"){
-	if($(window).scrollTop()>='300'){
+	if($(window).scrollTop()>=o.flip){
 		$("#theImg").rotateAnimation(0);
 		o.direction="up";
 	};
 
-	if($(window).scrollTop()<'300'){
+	if($(window).scrollTop()<o.flip){
 		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
