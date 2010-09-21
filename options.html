@@ -168,7 +168,16 @@ function report(option) {
 	}
 }
 
-
+function textChange(){
+var down=localStorage["stbb"];
+    if(down=="on"){
+        $("#textChange").html("Flip Distance:");
+        }
+        else
+            {
+            $("#textChange").html("Appear Distance:");
+            }
+}
 </script>
 
 <body onLoad="restore_options()">
@@ -256,26 +265,15 @@ Button Location:
 </select>
 </p>
 <p>
-<script type="text/javascript">
-$(document).ready(function(){ $("#stbb").change(function() {
-var down=$("#stbb option:selected").text();
-    if(down=="On"){
-        $("#textChange").html("Flip Distance:");
-        }
-        else
-            {
-            $("#textChange").html("Appear Distance:");
-            }
-    });
-});
-    </script>
-
 Scroll to Bottom Button:
-<select id="stbb" onChange="save_options();report(7)">
+<select id="stbb" onChange="save_options();textChange();report(7)">
  <option value="off">Off</option>
  <option value="on">On</option>
 </select>
 </p>
+<script type="text/javascript">
+$(document).ready(textChange());
+    </script>
 <button id="restore" onClick="defaults()"></button>
 <p id="status" style="float:left; font-size:.5em; line-height:.5"></p>
 <br/>
