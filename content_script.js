@@ -13,7 +13,6 @@
 *
 *Version: 3.0.0
 -----------------------*/
-/*
 // Checks if the URL already has built-in button.
 var alreadyHasIt = false;
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
@@ -113,5 +112,5 @@ $("#theImg").hover(function(){
 
  });
 
-};*/
+};
 
