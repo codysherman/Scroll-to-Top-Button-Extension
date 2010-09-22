@@ -1,10 +1,5 @@
 <script>
 
-  if (localStorage["latest"]!="2"){
-  chrome.tabs.create({url:'/options.html',selected:false});
-  localStorage["latest"]="1";
-  }
-
 // Creates options defaults in case user hasn't set them yet.
   if (!localStorage["scroll_speed"]) {
     localStorage["scroll_speed"] = 1000;
@@ -32,6 +27,10 @@
   }
   if (localStorage["distance_length"]==350) {
     localStorage["distance_length"] = 400;
+  }
+
+  if (localStorage["latest"]!="1"){
+  chrome.tabs.create({url:'/options.html',selected:false});
   }
 
 // Message passer to give [LocalStorage] settings to content_script.js which is not allowed access to [LocalStorage].

@@ -14,7 +14,18 @@ outline: none;
 #headerTitle {
 	width:827px;
 	height:384px;
+	margin-bottom:-200px;
 	background-image:url(images/title.png);
+}
+#header {
+	font: normal 1.5em/1.3  "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#welcome {
+	width:827px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:0px;
+	display:none;
 }
 #options {
 	width:827px;

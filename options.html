@@ -10,6 +10,7 @@
 // Restores default settings.
 function defaults() {
   localStorage.clear();
+  localStorage["latest"]="1";
   restore_options();
   save_options();
 }
@@ -174,6 +175,7 @@ function textChange(){
 		$("#textChange").html("Appear Distance:");	
 	}
 }
+
 </script>
 
 <body onLoad="restore_options()">
@@ -190,9 +192,21 @@ function textChange(){
      })();
  </script>
 
+
 <Div id="options">
 	<div id="headerTitle"></div>
 	<div id="content">
+<Div id="welcome"><center><p id="header">Welcome to Version 3.0!</p></center>
+<strong><p class="version">What is new:</p>
+<ul class="features">
+  <li>Scroll to Bottom Button! The arrow flips directions as you scroll down :)</li>
+  <li>More button placement options</li>
+  <li>Now replaces the arrow on Tumblr.com (Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
+  <li>Bug fixes/Speed improvements</li>
+  <li>Finally a nice looking options page (Thanks to <a href="http://victorstuber.com/" target="_blank">Victor Stuber</a>!)</li>
+  <li>And more!</li>
+</ul></strong>
+</div>
 <p>
 Scroll to Bottom Button:
 <select id="stbb" onChange="save_options();textChange();report(7)">
@@ -202,7 +216,7 @@ Scroll to Bottom Button:
 </p>
 <p>
 Scroll Speed:
-<select id="speed" onChange="save_options();report(1)">
+<select id="speed" onChange="save_options();car();report(1)">
  <option value="2000">Slow</option>
  <option value="1000">Fast</option>
  <option value="100">Faster</option>
@@ -283,5 +297,11 @@ Button Location:
 </div>
 	</div>
 </div>
+<script>
+if (localStorage["latest"]!="1"){
+	document.getElementById('welcome').style.display="inline";
+	localStorage["latest"]="1";
+};
+</script>
 </body>
 </html>
