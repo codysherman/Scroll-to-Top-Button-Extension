@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 3.0.0
+*Version: 3.1.0
 -----------------------*/
 // Checks if the URL already has built-in button.
 var alreadyHasIt = false;
