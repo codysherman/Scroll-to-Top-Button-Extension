@@ -224,7 +224,13 @@ $("#theImg2").hover(function(){
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
    $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"up"});
    $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"down"});
-
+   
+   shortcut.add("Ctrl+b", function() {
+       DOWN(speed, scroll);
+   });
+   shortcut.add("Ctrl+d", function() {
+       UP(speed, scroll);
+   });
 
  });
 
