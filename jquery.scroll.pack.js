@@ -10,6 +10,12 @@
 * 
 * Version: 3.1, 29/07/2010
 -----------------------*/
+function UP(speed,ease){
+$("html, body").animate({scrollTop:"0"},speed,ease,function() {inProgress="no"});
+}
+function DOWN(speed,ease){
+$("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {inProgress="no"});
+}
 (function($){
 	$.fn.extend({scrollToTop:function(options){
 
@@ -21,14 +27,14 @@
 
 	$(this).hide().removeAttr("href").css("cursor","pointer");
 
-	if(o.stbb=="on"){
+	if(o.stbb=="flip"){
 	if($(window).scrollTop()>=o.flip){
-		$("#theImg").rotateAnimation(0);
+		$(this).rotateAnimation(0);
 		o.direction="up";
 	};
 
 	if($(window).scrollTop()<o.flip){
-		$("#theImg").rotateAnimation(-180);
+		$(this).rotateAnimation(-180);
 		o.direction="down";
 	};
 };
@@ -43,14 +49,14 @@
 	}
 
 
-if(o.stbb=="on"){
+if(o.stbb=="flip"){
 	if($(window).scrollTop()>=o.flip){
-		$("#theImg").rotateAnimation(0);
+		$(this).rotateAnimation(0);
 		o.direction="up";
 	};
 
 	if($(window).scrollTop()<o.flip){
-		$("#theImg").rotateAnimation(-180);
+		$(this).rotateAnimation(-180);
 		o.direction="down";
 	};
 };
@@ -59,7 +65,7 @@ if(o.stbb=="on"){
 
 inProgress="no";
 
-if(o.stbb=="on"){
+if((o.stbb=="flip") || (o.stbb=="dual")){
 	scrollDiv.click(function(event){
 		if(inProgress=="yes"){
 		$("html, body").stop();
@@ -68,18 +74,21 @@ if(o.stbb=="on"){
 
 		else if(o.direction=="up"){
 		inProgress="yes";
-		$("html, body").animate({scrollTop:"0"},o.speed,o.ease,function() {inProgress="no"});
-		$("#theImg").fadeTo("medium", 0.5);
+		speed=o.speed;
+		ease=o.ease;
+		UP(speed,ease);
+		$(this).fadeTo("medium", 0.5);
 		}
 
 		else if(o.direction=="down"){
 		inProgress="yes";
-		$("html, body").animate({scrollTop:$(document).height()},o.speed,o.ease,function() {inProgress="no"});
-		$("#theImg").fadeTo("medium", 0.5);
+		speed=o.speed;
+		ease=o.ease;
+		DOWN(speed,ease);
+		$(this).fadeTo("medium", 0.5);
 		}
 	})
 }
-
 
 else if(o.stbb=="off"){
 	scrollDiv.click(function(event){
@@ -90,8 +99,9 @@ else if(o.stbb=="off"){
 
 		else{
 		inProgress="yes";
-		$("html, body").animate({scrollTop:"0"},o.speed,o.ease,function() {inProgress="no"});
-		$("#theImg").fadeTo("medium", 0.5);
+		speed=o.speed;
+		ease=o.ease;
+		UP(speed,ease);
 		}
 	})
 }

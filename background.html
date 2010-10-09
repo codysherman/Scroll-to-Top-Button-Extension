@@ -22,11 +22,8 @@
   if (!localStorage["stbb"]) {
     localStorage["stbb"] = "off";
   }
-  if (localStorage["distance_length"]==450) {
-    localStorage["distance_length"] = 400;
-  }
-  if (localStorage["distance_length"]==350) {
-    localStorage["distance_length"] = 400;
+  if (localStorage["stbb"]=="on") {
+    localStorage["stbb"] = "flip";
   }
 
   if (localStorage["latest"]!="1"){

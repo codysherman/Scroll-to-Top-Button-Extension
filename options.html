@@ -168,11 +168,27 @@ function report(option) {
 }
 
 function textChange(){
-	if(localStorage["stbb"]=="on"){
+	if(localStorage["stbb"]=="flip"){
         	$("#textChange").html("Flip Distance:");
+		$("#textChange").show();
+		$("#distance").show();
+		$(".appearance").show();
+	}
+	else if(localStorage["stbb"]=="dual"){
+		$("#textChange").hide();
+		$("#distance").hide();
+		$(".appearance").show();
+	}
+	else if(localStorage["stbb"]=="keys"){
+		$("#textChange").hide();
+		$("#distance").hide();
+		$(".appearance").hide();
 	}
         else{
-		$("#textChange").html("Appear Distance:");	
+		$("#textChange").html("Appear Distance:");
+		$("#textChange").show();
+		$("#distance").show();
+		$(".appearance").show();
 	}
 }
 
@@ -209,10 +225,12 @@ function textChange(){
 </ul></strong>
 </div>
 <p>
-Scroll to Bottom Button:
+Scroll to Top/Bottom Button Options:
 <select id="stbb" onChange="save_options();textChange();report(7)">
- <option value="off">Off</option>
- <option value="on">On</option>
+ <option value="off">Scroll to Top Button Only</option>
+ <option value="flip">Flip between Top/Bottom</option>
+ <option value="dual">Dual Arrows</option>
+ <option value="keys">Keyboard Only</option>
 </select>
 </p>
 <p>
@@ -238,16 +256,17 @@ Scroll Speed:
 </select>
 </p>
 <p>
-Button Size:
+<div class="appearance" style="clear:left;padding-right:4px;">Button Size:
 <select id="buttonsize" onChange="save_options();report(3)">
  <option value="35px">35x35 pixels</option>
  <option value="40px">40x40 pixels</option>
  <option value="45px">45x45 pixels</option>
  <option value="50px">50x50 pixels</option>
 </select>
+</div>
 </p>
 <p>
-Button Design:
+<div class="appearance" style="clear:left;padding-right:4px;">Button Design:
 <select id="buttoncolor" onChange="save_options();report(4)">
  <option value="arrow_blue">Tumblr Blue</option>
  <option value="arrow_grey">Grey</option>
@@ -265,6 +284,7 @@ Button Design:
  <option value="" disabled="disabled">Alternate Designs</option>
  <option value="arrow_pixel_blue">Pixel Design</option>
 </select>
+</div>
 </p>
 <p>
 Page Bounce:
@@ -274,15 +294,18 @@ Page Bounce:
 </select>
 </p>
 <p>
-Button Location:
+<div class="appearance" style="clear:left;padding-right:4px;">Button Location:
 <select id="location" onChange="save_options();report(6)">
  <option value="TR">Top Right</option>
  <option value="TL">Top Left</option>
  <option value="TC">Top Center</option>
+ <option value="CR">Center Right</option>
+ <option value="CL">Center Left</option>
  <option value="BR">Bottom Right</option>
  <option value="BL">Bottom Left</option>
  <option value="BC">Bottom Center</option>
 </select>
+</div>
 </p>
 <script type="text/javascript">$(document).ready(textChange());</script>
 <button id="restore" onClick="defaults()"></button>
