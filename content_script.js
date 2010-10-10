@@ -31,6 +31,9 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	else if (window.location.href.indexOf('http://www.tumblr.com/likes') != -1) {
 		$('#return_to_top').remove();
 	}
+	else if (window.location.href.indexOf('http://www.tumblr.com/messages') != -1) {
+		$('#return_to_top').remove();
+	}
 }
 
 if ((window == top) && ($(window).height()<$(document).height())) {

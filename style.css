@@ -1,5 +1,6 @@
 body {
   background-image:url(images/pat.png);
+  //background-color:#0077E3;
   color: #434b52;
   text-shadow:#FFF 0px 1px 0px;
   font: normal .9em/1.3  "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -55,6 +56,7 @@ outline: none;
 	background-position:0 -72px;
 }
 #bottomNav {
+	padding-top:10px;
 	height:32px;
 	width:600px;
 }
