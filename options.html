@@ -10,7 +10,7 @@
 // Restores default settings.
 function defaults() {
   localStorage.clear();
-  localStorage["latest"]="1";
+  localStorage["latest"]="2";
   restore_options();
   save_options();
 }
@@ -212,15 +212,13 @@ function textChange(){
 <Div id="options">
 	<div id="headerTitle"></div>
 	<div id="content">
-<Div id="welcome"><center><p id="header">Welcome to Version 3!</p></center>
+<Div id="welcome"><center><p id="header">Welcome to Version 4!</p></center>
 <strong><p class="version">What is new:</p>
 <ul class="features">
-  <li>Scroll to Bottom Button! The arrow flips directions as you scroll down :)</li>
-  <li>More Button Location/Speed options</li>
-  <li>Now replaces the arrow on Tumblr.com (Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
-  <li>Bug fixes/Speed improvements</li>
-  <li>Finally a nice looking options page (Thanks to <a href="http://victorstuber.com/" target="_blank">Victor Stuber</a>!)</li>
-  <li>Stops when clicked a second time</li>
+  <li>Dual button mode! Scroll to the top or the bottom!</li>
+  <li>You can now choose to put it on middle left or right</li>
+  <li>Keyboard shortcuts! Alt+Up Arrow or Alt+Down Arrow(Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
+  <li>Bug fixes</li>
   <li>And more!</li>
 </ul></strong>
 </div>
@@ -324,9 +322,9 @@ Page Bounce:
 	</div>
 </div>
 <script>
-if (localStorage["latest"]!="1"){
+if (localStorage["latest"]!="2"){
 	document.getElementById('welcome').style.display="inline";
-	localStorage["latest"]="1";
+	localStorage["latest"]="2";
 };
 </script>
 </body>

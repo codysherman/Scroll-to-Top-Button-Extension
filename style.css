@@ -45,7 +45,7 @@ outline: none;
 	background-image:url(images/restore.png);
 	background-color:transparent;
 	background-position:0 0;
-	clear:left;
+	float:left;
 	border:none;
 }
 #restore:hover {

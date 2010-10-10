@@ -45,6 +45,7 @@ if ((window == top) && (window.location.href.indexOf('twitter.com') != -1)) {
 loadSTTB="true";
 }
 
+
 if (loadSTTB=="true") {
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
@@ -56,6 +57,7 @@ var arrow = response.arrow;
 var scroll = response.scroll;
 var location = response.location;
 var stbb = response.stbb;
+
 if (stbb == "dual"){
 var imgURL=chrome.extension.getURL("arrows/dual/"+arrow+".png");
 }
@@ -209,6 +211,8 @@ else if (location == "BC") {
 
 if((stbb=="flip") || (stbb=="dual")){distance=0;};
 
+if (stbb != "keys"){
+
 $("#theImg").hover(function(){
 		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("fast", 1.0);}
 	},function(){
@@ -221,14 +225,17 @@ $("#theImg2").hover(function(){
    		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("medium", 0.5);}
 	});
 
+
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
    $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"up"});
    $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"down"});
+
+} //Keyboard Only
    
-   shortcut.add("Ctrl+b", function() {
+   shortcut.add("Alt+Down", function() {
        DOWN(speed, scroll);
    });
-   shortcut.add("Ctrl+d", function() {
+   shortcut.add("Alt+Up", function() {
        UP(speed, scroll);
    });
 
