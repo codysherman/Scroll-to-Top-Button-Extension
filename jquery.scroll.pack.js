@@ -28,13 +28,13 @@ $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {
 	$(this).hide().removeAttr("href").css("cursor","pointer");
 
 	if(o.stbb=="flip"){
-	if($(window).scrollTop()>=o.flip){
-		$(this).rotateAnimation(0);
+	if($(window).scrollTop()>=o.flipDistance){
+		$("#theImg").rotateAnimation(0);
 		o.direction="up";
 	};
 
-	if($(window).scrollTop()<o.flip){
-		$(this).rotateAnimation(-180);
+	if($(window).scrollTop()<"200"){
+		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };
@@ -48,15 +48,14 @@ $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {
 	$(scrollDiv).fadeOut("slow");
 	}
 
-
 if(o.stbb=="flip"){
-	if($(window).scrollTop()>=o.flip){
-		$(this).rotateAnimation(0);
+	if($(window).scrollTop()>=o.flipDistance){
+		$("#theImg").rotateAnimation(0);
 		o.direction="up";
 	};
 
-	if($(window).scrollTop()<o.flip){
-		$(this).rotateAnimation(-180);
+	if($(window).scrollTop()<o.flipDistance){
+		$("#theImg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };

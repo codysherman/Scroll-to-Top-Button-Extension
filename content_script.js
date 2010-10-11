@@ -54,7 +54,7 @@ if (loadSTTB=="true") {
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
 var distance = parseInt(response.distance);
-var flip = parseInt(response.distance);
+var flipDistance = parseInt(response.distance);
 var size = response.size;
 var arrow = response.arrow;
 var scroll = response.scroll;
@@ -230,8 +230,8 @@ $("#theImg2").hover(function(){
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"up"});
-   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flip:flip, direction:"down"});
+   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, direction:"up"});
+   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, direction:"down"});
 
 } //Keyboard Only
    
