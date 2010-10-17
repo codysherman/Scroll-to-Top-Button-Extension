@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.0.0
+*Version: 4.1.0
 -----------------------*/
 // Checks if the URL already has built-in button.
 var alreadyHasIt = false;
@@ -40,13 +40,17 @@ if ((window == top) && ($(window).height()<$(document).height())) {
 loadSTTB="true";
 }
 
-if ((window == top) && (window.location.href.indexOf('facebook.com') != -1)) {
+/*if ((window == top) && (window.location.href.indexOf('facebook.com') != -1)) {
 loadSTTB="true";
 }
 
 if ((window == top) && (window.location.href.indexOf('twitter.com') != -1)) {
 loadSTTB="true";
 }
+
+if ((window == top) && (window.location.href.indexOf('tumblr.com/archive') != -1)) {
+loadSTTB="true";
+}*/
 
 
 if (loadSTTB=="true") {
@@ -60,6 +64,7 @@ var arrow = response.arrow;
 var scroll = response.scroll;
 var location = response.location;
 var stbb = response.stbb;
+var transparency = response.transparency;
 
 if (stbb == "dual"){
 var imgURL=chrome.extension.getURL("arrows/dual/"+arrow+".png");
@@ -73,7 +78,7 @@ var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
 	if(stbb=="flip"){
 	$("#theImg").rotate(-180);
 	};
-theImg.style.opacity = 0.5;
+theImg.style.opacity = transparency;
 theImg.src=imgURL;
 theImg.style.position = 'fixed';
 theImg.style.width = size;
@@ -153,12 +158,12 @@ else if ((location == "BC") && (stbb == "dual")) {
 if(stbb=="dual"){
    $("body").prepend('<img id=theImg2 />');
 	$("#theImg2").rotate(-180);
-theImg2.style.opacity = 0.5;
+theImg2.style.opacity = transparency;
 theImg2.src=imgURL;
 theImg2.style.position = 'fixed';
 theImg2.style.width = size;
 theImg2.style.height = 'auto';
-theImg2.style.display = 'none';
+//theImg2.style.display = 'none';
 theImg2.style.zIndex = 2147483647;
 theImg2.style.border = '0px';
 theImg2.style.padding = '0px';
@@ -219,19 +224,19 @@ if (stbb != "keys"){
 $("#theImg").hover(function(){
 		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("fast", 1.0);}
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", 0.5);}
+   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);}
 	});
 
 $("#theImg2").hover(function(){
 		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("fast", 1.0);}
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("medium", 0.5);}
+   		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("medium", transparency);}
 	});
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, direction:"up"});
-   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, direction:"down"});
+   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"up"});
+   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
 
 } //Keyboard Only
    

@@ -22,6 +22,12 @@
   if (!localStorage["stbb"]) {
     localStorage["stbb"] = "off";
   }
+  if (!localStorage["transparency"]) {
+    localStorage["transparency"] = "0.5";
+  }
+  if (!localStorage["contextmenu"]) {
+    localStorage["contextmenu"] = "on";
+  }
   if (localStorage["stbb"]=="on") {
     localStorage["stbb"] = "flip";
   }
@@ -34,9 +40,13 @@
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.greeting == "settings")
-      sendResponse({speed: localStorage["scroll_speed"], distance: localStorage["distance_length"], size: localStorage["size"], arrow: localStorage["arrow"], scroll: localStorage["scroll"], location: localStorage["location"], stbb: localStorage["stbb"]});
+      sendResponse({speed: localStorage["scroll_speed"], distance: localStorage["distance_length"], size: localStorage["size"], arrow: localStorage["arrow"], scroll: localStorage["scroll"], location: localStorage["location"], stbb: localStorage["stbb"],  transparency: localStorage["transparency"]});
     else
       sendResponse({}); // snub them.
   });
 
+
+
 </script>
+
+<script src="contextmenu.js"></script>
