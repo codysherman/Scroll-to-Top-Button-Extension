@@ -1,6 +1,5 @@
-// A generic onclick callback function.
 function genericOnClick(info, tab) {
-  $("html, body").animate({scrollTop:"0"},1000,"jswing");
+scroll(0,0);
 }
 
 // Create one test item for each context type.

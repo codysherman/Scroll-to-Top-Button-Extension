@@ -14,7 +14,6 @@
 *Version: 4.1.0
 -----------------------*/
 // Checks if the URL already has built-in button.
-var alreadyHasIt = false;
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	if (window.location.href.indexOf('http://www.tumblr.com/dashboard') != -1) {
 		$('#return_to_top').remove();
@@ -36,24 +35,25 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	}
 }
 
+var alreadyHasIt = "0";
+
+$(document).ready(function($) {
 if ((window == top) && ($(window).height()<$(document).height())) {
-loadSTTB="true";
+STTB();
+};
+});
+
+$(window).scroll(function () { 
+	STTB();
+    });
+
+if ((window == top) && ($(window).height()<$(document).height())) {
+STTB();
 }
 
-/*if ((window == top) && (window.location.href.indexOf('facebook.com') != -1)) {
-loadSTTB="true";
-}
-
-if ((window == top) && (window.location.href.indexOf('twitter.com') != -1)) {
-loadSTTB="true";
-}
-
-if ((window == top) && (window.location.href.indexOf('tumblr.com/archive') != -1)) {
-loadSTTB="true";
-}*/
-
-
-if (loadSTTB=="true") {
+function STTB() {
+if (alreadyHasIt=="0") {
+alreadyHasIt = "1";
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
@@ -248,6 +248,8 @@ $("#theImg2").hover(function(){
    });
 
  });
+
+};
 
 };
 
