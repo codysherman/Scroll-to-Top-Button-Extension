@@ -35,7 +35,11 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	}
 }
 
-var alreadyHasIt = "0";
+var alreadyHasIt = 0;
+
+if ((window == top) && ($(window).height()<$(document).height())) {
+STTB();
+}
 
 $(document).ready(function($) {
 if ((window == top) && ($(window).height()<$(document).height())) {
@@ -47,13 +51,9 @@ $(window).scroll(function () {
 	STTB();
     });
 
-if ((window == top) && ($(window).height()<$(document).height())) {
-STTB();
-}
-
 function STTB() {
-if (alreadyHasIt=="0") {
-alreadyHasIt = "1";
+if (alreadyHasIt==0) {
+alreadyHasIt = 1;
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
