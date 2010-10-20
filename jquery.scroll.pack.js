@@ -76,7 +76,12 @@ if((o.stbb=="flip") || (o.stbb=="dual")){
 		speed=o.speed;
 		ease=o.ease;
 		UP(speed,ease);
-		$(this).fadeTo("medium", o.transparency);
+		if((o.transparency=="0.0")&&(o.stbb=="dual")){
+			$(this).fadeTo("medium", 0.5);
+			}
+		else{
+			$(this).fadeTo("medium", o.transparency);
+			}
 		}
 
 		else if(o.direction=="down"){
@@ -84,7 +89,12 @@ if((o.stbb=="flip") || (o.stbb=="dual")){
 		speed=o.speed;
 		ease=o.ease;
 		DOWN(speed,ease);
-		$(this).fadeTo("medium", o.transparency);
+		if((o.transparency=="0.0")&&(o.stbb=="dual")){
+			$(this).fadeTo("medium", 0.5);
+			}
+		else{
+			$(this).fadeTo("medium", o.transparency);
+			}
 		}
 	})
 }

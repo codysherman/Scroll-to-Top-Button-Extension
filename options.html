@@ -33,9 +33,9 @@ function save_options() {
   var color = select.children[select.selectedIndex].value;
   localStorage["arrow"] = color;
 
-  var select = document.getElementById("scroll");
+  /*var select = document.getElementById("scroll");
   var scroll = select.children[select.selectedIndex].value;
-  localStorage["scroll"] = scroll;
+  localStorage["scroll"] = scroll;*/
 
   var select = document.getElementById("location");
   var location = select.children[select.selectedIndex].value;
@@ -48,10 +48,6 @@ function save_options() {
   var select = document.getElementById("transparency");
   var transparency = select.children[select.selectedIndex].value;
   localStorage["transparency"] = transparency;
-
-  var select = document.getElementById("contextmenu");
-  var contextmenu = select.children[select.selectedIndex].value;
-  localStorage["contextmenu"] = contextmenu;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -111,7 +107,7 @@ function restore_options() {
       break;
     }
   }
-  var favorite5 = localStorage["scroll"];
+  /*var favorite5 = localStorage["scroll"];
   if (!favorite5) {
     favorite5 = "jswing";
   }
@@ -122,7 +118,7 @@ function restore_options() {
       child.selected = "true";
       break;
     }
-  }
+  }*/
  var favorite6 = localStorage["location"];
   if (!favorite6) {
     favorite6 = "TR";
@@ -159,18 +155,6 @@ function restore_options() {
       break;
     }
   }
- var favorite9 = localStorage["contextmenu"];
-  if (!favorite9) {
-    favorite9 = "on";
-  }
-  var select = document.getElementById("contextmenu");
-  for (var i = 0; i < select.children.length; i++) {
-    var child = select.children[i];
-    if (child.value == favorite9) {
-      child.selected = "true";
-      break;
-    }
-  }
   save_options();
 }
 
@@ -199,9 +183,6 @@ function report(option) {
 	}
 	else if (option == 8) {
 		_gaq.push(['_trackEvent', 'Transparency', localStorage["transparency"]]);
-	}
-	else if (option == 9) {
-		_gaq.push(['_trackEvent', 'Context Menu', localStorage["contextmenu"]]);
 	}
 }
 
@@ -250,17 +231,17 @@ function textChange(){
 <Div id="options">
 	<div id="headerTitle"></div>
 	<div id="content">
-<Div id="welcome"><center><p id="header">Welcome to Version 4!</p></center>
+<Div id="welcome">
+<!--<center><p id="header">Welcome to Version 4!</p></center>
 <strong><p class="version">New Stuff:</p>
 <ul class="features">
   <li>Dual button mode! Scroll to the top or the bottom!</li>
   <li>You can now choose to put it on the middle left or right</li>
   <li>Keyboard shortcuts! Alt+Up or Alt+Down (Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
-  <li>Bug fixes</li>
-  <li>And more! <a href="http://scrolltotopbutton.tumblr.com/" target="_blank">Keep up to date on new features here!</a></li>
-</ul></strong>
+  <li>Bug fixes</li></ul></strong>
+  <p><center><a href="http://scrolltotopbutton.tumblr.com/" target="_blank">Keep up to date on new features here!</a></center></p>-->
 </div>
-<p>Please <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">rate this extension</a> if you enjoy it! Or request a new feature! The feedback really means a lot to me!</p>
+<p><strong>Please <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">rate this extension</a> if you enjoy it! Or request a new feature! The feedback really means a lot to me!</strong></p>
 <p>
 Button Mode:
 <select id="stbb" onChange="save_options();textChange();report(7)">
@@ -323,13 +304,13 @@ Scroll Speed:
 </select>
 </div>
 </p>
-<p>
+<!--<p>
 Page Bounce:
 <select id="scroll" onChange="save_options();report(5)">
  <option value="jswing">Off</option>
  <option value="easeOutBounce">On</option>
 </select>
-</p>
+</p>-->
 <p>
 <div class="appearance" style="clear:left;padding-right:4px;">Button Location:
 <select id="location" onChange="save_options();report(6)">
@@ -352,18 +333,11 @@ Page Bounce:
 </select>
 </div>
 </p>
-<p>
-Right-click Menu:
-<select id="contextmenu" onChange="save_options();report(9)">
- <option value="on">On</option>
- <option value="off">Off</option>
-</select>
-</p>
 <script type="text/javascript">$(document).ready(textChange());</script>
 <button id="restore" onClick="defaults()"></button>
 <p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
 <p style="padding-top:60px;">Press Alt+Up or Alt+Down on a page to use STTB with just your keyboard!</p>
-<p>Do you speak multiple languages? Please help me translate this extension, <a href="mailto:sttb@codysherman.com">Email me!</a></p>
+<p><strong>Do you speak multiple languages? Please help me translate this extension, <a href="mailto:sttb@codysherman.com">Email me!</a> (Especially if you speak Japanese!)</strong></p>
 <div id="bottomNav">
 <a href="http://scrolltotopbutton.tumblr.com/" target="_blank"><div id="release"></div></a>
 <a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank"><div id="source"></div></a>

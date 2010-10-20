@@ -221,6 +221,31 @@ if((stbb=="flip") || (stbb=="dual")){distance=0;};
 
 if (stbb != "keys"){
 
+if ((transparency == 0.0) && (stbb=="dual")){
+$("#theImg").hover(function(){
+		if($(window).scrollTop()>=distance){
+$("#theImg").stop();
+$("#theImg2").stop();
+$("#theImg").fadeTo("fast", 1.0);
+$("#theImg2").fadeTo("fast", 0.5);
+}
+	},function(){
+   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);$("#theImg2").fadeTo("medium", transparency);}
+	});
+
+$("#theImg2").hover(function(){
+		if($(window).scrollTop()>=distance){
+$("#theImg").stop();
+$("#theImg2").stop();
+$("#theImg").fadeTo("fast", 0.5);
+$("#theImg2").fadeTo("fast", 1.0);
+}
+	},function(){
+   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);$("#theImg2").fadeTo("medium", transparency);}
+	});
+}
+
+else{
 $("#theImg").hover(function(){
 		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("fast", 1.0);}
 	},function(){
@@ -232,6 +257,7 @@ $("#theImg2").hover(function(){
 	},function(){
    		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("medium", transparency);}
 	});
+}
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
