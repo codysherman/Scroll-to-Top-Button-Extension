@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.1.1
+*Version: 4.2.0
 -----------------------*/
 // Checks if the URL already has built-in button.
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
