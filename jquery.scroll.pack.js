@@ -29,12 +29,12 @@ $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {
 
 	if(o.stbb=="flip"){
 	if($(window).scrollTop()>=o.flipDistance){
-		$("#theImg").rotateAnimation(0);
+		$("#STTBimg").rotateAnimation(0);
 		o.direction="up";
 	};
 
 	if($(window).scrollTop()<"200"){
-		$("#theImg").rotateAnimation(-180);
+		$("#STTBimg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };
@@ -50,12 +50,12 @@ $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {
 
 if(o.stbb=="flip"){
 	if($(window).scrollTop()>=o.flipDistance){
-		$("#theImg").rotateAnimation(0);
+		$("#STTBimg").rotateAnimation(0);
 		o.direction="up";
 	};
 
 	if($(window).scrollTop()<o.flipDistance){
-		$("#theImg").rotateAnimation(-180);
+		$("#STTBimg").rotateAnimation(-180);
 		o.direction="down";
 	};
 };

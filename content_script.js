@@ -11,8 +11,11 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.1.1
+*Version: 4.3.0
 -----------------------*/
+
+STTB();
+
 // Checks if the URL already has built-in button.
 if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	if (window.location.href.indexOf('http://www.tumblr.com/dashboard') != -1) {
@@ -35,25 +38,7 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	}
 }
 
-var alreadyHasIt = 0;
-
-if ((window == top) && ($(window).height()<$(document).height())) {
-STTB();
-}
-
-$(document).ready(function($) {
-if ((window == top) && ($(window).height()<$(document).height())) {
-STTB();
-};
-});
-
-$(window).scroll(function () { 
-	STTB();
-    });
-
 function STTB() {
-if (alreadyHasIt==0) {
-alreadyHasIt = 1;
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
@@ -74,195 +59,202 @@ var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
 }
 
 // Actually creates the button on the page.
-   $("body").prepend('<img id=theImg />');
+   $("body").prepend('<img id=STTBimg />');
 	if(stbb=="flip"){
-	$("#theImg").rotate(-180);
+	$("#STTBimg").rotate(-180);
 	};
-theImg.style.opacity = transparency;
-theImg.src=imgURL;
-theImg.style.position = 'fixed';
-theImg.style.width = size;
-theImg.style.height = 'auto';
-theImg.style.display = 'none';
-theImg.style.zIndex = 2147483647;
-theImg.style.border = '0px';
-theImg.style.padding = '0px';
+STTBimg.style.opacity = transparency;
+STTBimg.src=imgURL;
+STTBimg.style.position = 'fixed';
+STTBimg.style.width = size;
+STTBimg.style.height = 'auto';
+STTBimg.style.display = 'none';
+STTBimg.style.zIndex = 2147483647;
+STTBimg.style.border = '0px';
+STTBimg.style.padding = '0px';
 if (location == "TR") {
-		theImg.style.top = '20px';
-		theImg.style.right = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.top = '20px';
+		STTBimg.style.right = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "TL") {
-		theImg.style.top = '20px';
-		theImg.style.left = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.top = '20px';
+		STTBimg.style.left = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if ((location == "BR") && (stbb != "dual")) {
-		theImg.style.bottom = '20px';
-		theImg.style.right = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.bottom = '20px';
+		STTBimg.style.right = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if ((location == "BR") && (stbb == "dual")) {
 		adjust=parseInt(size) / 2 + 22;
 		adjusted=adjust + "px";
-		theImg.style.bottom = adjusted;
-		theImg.style.right = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.bottom = adjusted;
+		STTBimg.style.right = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if ((location == "BL") && (stbb != "dual")) {
-		theImg.style.bottom = '20px';
-		theImg.style.left = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.bottom = '20px';
+		STTBimg.style.left = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if ((location == "BL") && (stbb == "dual")) {
 		adjust=parseInt(size) / 2 + 22;
 		adjusted=adjust + "px";
-		theImg.style.bottom = adjusted;
-		theImg.style.left = '20px';
-		theImg.style.margin = '0px 0px 0px 0px';
+		STTBimg.style.bottom = adjusted;
+		STTBimg.style.left = '20px';
+		STTBimg.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "CR") {
 		adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-		theImg.style.right = '20px';
-		theImg.style.top = '50%';
-		theImg.style.margin = adjust;
+		STTBimg.style.right = '20px';
+		STTBimg.style.top = '50%';
+		STTBimg.style.margin = adjust;
 	}
 else if (location == "CL") {
 		adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-		theImg.style.left = '20px';
-		theImg.style.top = '50%';
-		theImg.style.margin = adjust;
+		STTBimg.style.left = '20px';
+		STTBimg.style.top = '50%';
+		STTBimg.style.margin = adjust;
 	}
 else if (location == "TC") {
 
 		adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-		theImg.style.top = '20px';
-		theImg.style.right = '50%';
-		theImg.style.margin = adjust;
+		STTBimg.style.top = '20px';
+		STTBimg.style.right = '50%';
+		STTBimg.style.margin = adjust;
 	}
 else if ((location == "BC") && (stbb != "dual")) {
 		adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-		theImg.style.bottom = '20px';
-		theImg.style.right = '50%';
-		theImg.style.margin = adjust;
+		STTBimg.style.bottom = '20px';
+		STTBimg.style.right = '50%';
+		STTBimg.style.margin = adjust;
 	}
 else if ((location == "BC") && (stbb == "dual")) {
 		adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
 		adjust2=parseInt(size) / 2 + 22;
 		adjusted=adjust2 + "px";
-		theImg.style.bottom = adjusted;
-		theImg.style.right = '50%';
-		theImg.style.margin = adjust;
+		STTBimg.style.bottom = adjusted;
+		STTBimg.style.right = '50%';
+		STTBimg.style.margin = adjust;
 	}
 
 if(stbb=="dual"){
-   $("body").prepend('<img id=theImg2 />');
-	$("#theImg2").rotate(-180);
-theImg2.style.opacity = transparency;
-theImg2.src=imgURL;
-theImg2.style.position = 'fixed';
-theImg2.style.width = size;
-theImg2.style.height = 'auto';
-//theImg2.style.display = 'none';
-theImg2.style.zIndex = 2147483647;
-theImg2.style.border = '0px';
-theImg2.style.padding = '0px';
+   $("body").prepend('<img id=STTBimg2 />');
+	$("#STTBimg2").rotate(-180);
+STTBimg2.style.opacity = transparency;
+STTBimg2.src=imgURL;
+STTBimg2.style.position = 'fixed';
+STTBimg2.style.width = size;
+STTBimg2.style.height = 'auto';
+STTBimg2.style.display = 'none';
+STTBimg2.style.zIndex = 2147483647;
+STTBimg2.style.border = '0px';
+STTBimg2.style.padding = '0px';
 if (location == "TR") {
 		adjust=parseInt(size) / 2 + 22;
 		adjusted=adjust + "px";
-		theImg2.style.top = adjusted;
-		theImg2.style.right = '20px';
-		theImg2.style.margin = '0px 0px 0px 0px';
+		STTBimg2.style.top = adjusted;
+		STTBimg2.style.right = '20px';
+		STTBimg2.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "TL") {
 		adjust=parseInt(size) / 2 + 22;
 		adjusted=adjust + "px";
-		theImg2.style.top = adjusted;
-		theImg2.style.left = '20px';
-		theImg2.style.margin = '0px 0px 0px 0px';
+		STTBimg2.style.top = adjusted;
+		STTBimg2.style.left = '20px';
+		STTBimg2.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "BR") {
-		theImg2.style.bottom = '20px';
-		theImg2.style.right = '20px';
-		theImg2.style.margin = '0px 0px 0px 0px';
+		STTBimg2.style.bottom = '20px';
+		STTBimg2.style.right = '20px';
+		STTBimg2.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "BL") {
-		theImg2.style.bottom = '20px';
-		theImg2.style.left = '20px';
-		theImg2.style.margin = '0px 0px 0px 0px';
+		STTBimg2.style.bottom = '20px';
+		STTBimg2.style.left = '20px';
+		STTBimg2.style.margin = '0px 0px 0px 0px';
 	}
 else if (location == "CR") {
 		adjust=2 + "px 0px 0px 0px";
-		theImg2.style.right = '20px';
-		theImg2.style.top = '50%';
-		theImg2.style.margin = adjust;
+		STTBimg2.style.right = '20px';
+		STTBimg2.style.top = '50%';
+		STTBimg2.style.margin = adjust;
 	}
 else if (location == "CL") {
 		adjust=2 + "px 0px 0px 0px";
-		theImg2.style.left = '20px';
-		theImg2.style.top = '50%';
-		theImg2.style.margin = adjust;
+		STTBimg2.style.left = '20px';
+		STTBimg2.style.top = '50%';
+		STTBimg2.style.margin = adjust;
 	}
 else if (location == "TC") {
 		adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-		theImg2.style.top = '20px';
-		theImg2.style.right = '50%';
-		theImg2.style.margin = adjust;
+		STTBimg2.style.top = '20px';
+		STTBimg2.style.right = '50%';
+		STTBimg2.style.margin = adjust;
 	}
 else if (location == "BC") {
 		adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-		theImg2.style.bottom = '20px';
-		theImg2.style.right = '50%';
-		theImg2.style.margin = adjust;
+		STTBimg2.style.bottom = '20px';
+		STTBimg2.style.right = '50%';
+		STTBimg2.style.margin = adjust;
 	}
 }
 
 if((stbb=="flip") || (stbb=="dual")){distance=0;};
 
 if (stbb != "keys"){
+var head = document.getElementsByTagName('head')[0],
+    style = document.createElement('style'),
+    rules = document.createTextNode('@media print{#STTBimg{ display:none; }#STTBimg2{ display:none; }}');
+
+style.type = 'text/css';
+style.appendChild(rules);
+head.appendChild(style);
 
 if ((transparency == 0.0) && (stbb=="dual")){
-$("#theImg").hover(function(){
+$("#STTBimg").hover(function(){
 		if($(window).scrollTop()>=distance){
-$("#theImg").stop();
-$("#theImg2").stop();
-$("#theImg").fadeTo("fast", 1.0);
-$("#theImg2").fadeTo("fast", 0.5);
+$("#STTBimg").stop();
+$("#STTBimg2").stop();
+$("#STTBimg").stop().fadeTo("fast", 1.0);
+$("#STTBimg2").stop().fadeTo("fast", 0.5);
 }
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);$("#theImg2").fadeTo("medium", transparency);}
+   		if($(window).scrollTop()>=distance){$("#STTBimg").stop().fadeTo("medium", transparency);$("#STTBimg2").stop().fadeTo("medium", transparency);}
 	});
 
-$("#theImg2").hover(function(){
+$("#STTBimg2").hover(function(){
 		if($(window).scrollTop()>=distance){
-$("#theImg").stop();
-$("#theImg2").stop();
-$("#theImg").fadeTo("fast", 0.5);
-$("#theImg2").fadeTo("fast", 1.0);
+$("#STTBimg").stop();
+$("#STTBimg2").stop();
+$("#STTBimg").stop().fadeTo("fast", 0.5);
+$("#STTBimg2").stop().fadeTo("fast", 1.0);
 }
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);$("#theImg2").fadeTo("medium", transparency);}
+   		if($(window).scrollTop()>=distance){$("#STTBimg").fadeTo("medium", transparency);$("#STTBimg2").fadeTo("medium", transparency);}
 	});
 }
 
 else{
-$("#theImg").hover(function(){
-		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("fast", 1.0);}
+$("#STTBimg").hover(function(){
+		if($(window).scrollTop()>=distance){$("#STTBimg").stop().fadeTo("fast", 1.0);}
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg").fadeTo("medium", transparency);}
+   		if($(window).scrollTop()>=distance){$("#STTBimg").stop().fadeTo("medium", transparency);}
 	});
 
-$("#theImg2").hover(function(){
-		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("fast", 1.0);}
+$("#STTBimg2").hover(function(){
+		if($(window).scrollTop()>=distance){$("#STTBimg2").stop().fadeTo("fast", 1.0);}
 	},function(){
-   		if($(window).scrollTop()>=distance){$("#theImg2").fadeTo("medium", transparency);}
+   		if($(window).scrollTop()>=distance){$("#STTBimg2").stop().fadeTo("medium", transparency);}
 	});
 }
 
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-   $("#theImg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"up"});
-   $("#theImg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
+   $("#STTBimg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"up"});
+   $("#STTBimg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
 
 } //Keyboard Only
    
@@ -275,6 +267,26 @@ $("#theImg2").hover(function(){
 
  });
 
+$(document).ready(function($) {
+	if ((window == top) && ($(window).height()>=$(document).height())) {
+	REMOVE();
+	};
+});
+
+function REMOVE() {
+$("#STTBimg").fadeTo("fast", 0.0).remove();
+$("#STTBimg2").fadeTo("fast", 0.0).remove();
+watch();
+};
+
+function watch(){
+	var scrolled = 0;
+	$(window).scroll(function () {
+		if (scrolled==0) { 
+			STTB();
+			scrolled = 1;
+		};
+	});
 };
 
 };
