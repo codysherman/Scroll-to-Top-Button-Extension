@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.3.0
+*Version: 4.3.3
 -----------------------*/
 
 STTB();
@@ -200,6 +200,9 @@ else if (location == "BC") {
 		STTBimg2.style.right = '50%';
 		STTBimg2.style.margin = adjust;
 	}
+
+CheckIt();
+
 }
 
 if((stbb=="flip") || (stbb=="dual")){distance=0;};
@@ -261,21 +264,41 @@ $("#STTBimg2").hover(function(){
    shortcut.add("Alt+Down", function() {
        DOWN(speed, scroll);
    });
+   shortcut.add("End", function() {
+       DOWN(speed, scroll);
+       },{
+       'disable_in_input':true
+   });
    shortcut.add("Alt+Up", function() {
        UP(speed, scroll);
+   });
+   shortcut.add("Home", function() {
+       UP(speed, scroll);
+       },{
+       'disable_in_input':true
    });
 
  });
 
+function CheckIt() {
 $(document).ready(function($) {
 	if ((window == top) && ($(window).height()>=$(document).height())) {
-	REMOVE();
-	};
-});
+		REMOVE();
+	}
+	else if (window.location.href.indexOf('mail.google.com/') != -1) {
+		REMOVE();
+	}
+	else if (window.location.href.indexOf('docs.google.com/') != -1) {
+		REMOVE();
+	}
 
 function REMOVE() {
-$("#STTBimg").fadeTo("fast", 0.0).remove();
-$("#STTBimg2").fadeTo("fast", 0.0).remove();
+$('#STTBimg').fadeTo('fast', 0.0, function() {
+      $(this).remove();
+});
+$('#STTBimg2').fadeTo('fast', 0.0, function() {
+      $(this).remove();
+});
 watch();
 };
 
@@ -287,7 +310,15 @@ function watch(){
 			scrolled = 1;
 		};
 	});
+
+
+};
+
+});
+
 };
 
 };
+
+
 
