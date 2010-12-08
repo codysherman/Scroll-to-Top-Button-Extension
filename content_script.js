@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.3.3
+*Version: 4.4.1
 -----------------------*/
 
 STTB();

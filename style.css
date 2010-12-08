@@ -48,11 +48,29 @@ outline: none;
 	background-position:0 0;
 	float:left;
 	border:none;
+	cursor: pointer;
 }
 #restore:hover {
 	background-position:0 -36px;
 }
 #restore:active {
+	background-position:0 -72px;
+}
+#author {
+	width:128px;
+	height:36px;
+	background-image:url(images/author.png);
+	background-color:transparent;
+	background-position:0 0;
+	float:left;
+	border:none;
+	margin-left: 5px;
+	cursor: pointer;
+}
+#author:hover {
+	background-position:0 -36px;
+}
+#author:active {
 	background-position:0 -72px;
 }
 #bottomNav {
