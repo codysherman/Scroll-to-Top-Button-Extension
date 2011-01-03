@@ -10,7 +10,13 @@
 
 // Restores default settings.
 function defaults() {
+  loadcount=localStorage["loadcount"];
+  donated=localStorage["donated"];
+  bothered=localStorage["bothered"];
   localStorage.clear();
+  localStorage["loadcount"]=loadcount;
+  localStorage["bothered"]=bothered;
+  localStorage["donated"]=donated;
   localStorage["latest"]="2";
   restore_options();
   save_options();
@@ -19,6 +25,7 @@ function defaults() {
 
 function authorsettings() {
   localStorage["scroll_speed"]="1000";
+  localStorage["scroll_speed2"]="1000";
   localStorage["size"]="50px";
   localStorage["arrow"]="arrow_only_blue";
   localStorage["location"]="CR";
@@ -34,6 +41,10 @@ function save_options() {
   var select = document.getElementById("speed");
   var speed = select.children[select.selectedIndex].value;
   localStorage["scroll_speed"] = speed;
+
+  var select = document.getElementById("speed2");
+  var speed2 = select.children[select.selectedIndex].value;
+  localStorage["scroll_speed2"] = speed2;
 
   var select = document.getElementById("distance");
   var distance = select.children[select.selectedIndex].value;
@@ -78,6 +89,18 @@ function restore_options() {
     favorite = 1000;
   }
   var select = document.getElementById("speed");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite) {
+      child.selected = "true";
+      break;
+    }
+  }
+  var favorite = localStorage["scroll_speed2"];
+  if (!favorite) {
+    favorite = 1000;
+  }
+  var select = document.getElementById("speed2");
   for (var i = 0; i < select.children.length; i++) {
     var child = select.children[i];
     if (child.value == favorite) {
@@ -198,6 +221,9 @@ function report(option) {
 	else if (option == 8) {
 		_gaq.push(['_trackEvent', 'Transparency', localStorage["transparency"]]);
 	}
+	else if (option == 9) {
+		_gaq.push(['_trackEvent', 'Scroll Speed Down', localStorage["scroll_speed2"]]);
+	}
 }
 
 function textChange(){
@@ -206,22 +232,26 @@ function textChange(){
 		$("#textChange").show();
 		$("#distance").show();
 		$(".appearance").show();
+		$(".down").show();
 	}
 	else if(localStorage["stbb"]=="dual"){
 		$("#textChange").hide();
 		$("#distance").hide();
 		$(".appearance").show();
+		$(".down").show();
 	}
 	else if(localStorage["stbb"]=="keys"){
 		$("#textChange").hide();
 		$("#distance").hide();
 		$(".appearance").hide();
+		$(".down").show();
 	}
         else{
 		$("#textChange").html("Appear Distance:");
 		$("#textChange").show();
 		$("#distance").show();
 		$(".appearance").show();
+		$(".down").hide();
 	}
 }
 
@@ -251,22 +281,22 @@ function textChange(){
 <ul class="features">
   <li>Dual button mode! Scroll to the top or the bottom!</li>
   <li>You can now choose to put it on the middle left or right</li>
-  <li>Keyboard shortcuts! Alt+Up or Alt+Down (Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
+  <li>Keyboard shortcuts! Alt+T or Alt+B (Thanks to <a href="http://davidblasiak.tumblr.com/" target="_blank">David Blasiak</a>!)</li>
   <li>Bug fixes</li></ul></strong>
   <p><center><a href="http://scrolltotopbutton.tumblr.com/" target="_blank">Keep up to date on new features here!</a></center></p>-->
 </div>
-<p><strong>Please <a href="https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">rate this extension</a> if you enjoy it! Or request a new feature! The feedback really means a lot to me!</strong></p>
+<p><strong>Please <a href="https://chrome.google.com/webstore/detail/chiikmhgllekggjhdfjhajkfdkcngplp" target="_blank">rate this extension</a> if you enjoy it! Or request a new feature! The feedback really means a lot to me!</strong></p>
 <p>
 Button Mode:
 <select id="stbb" onChange="save_options();textChange();report(7)">
- <option value="off">Scroll to Top Button Only</option>
+ <option value="off">Scroll to Top Only</option>
  <option value="flip">Flip between Top/Bottom</option>
  <option value="dual">Dual Arrows</option>
  <option value="keys">Keyboard Only</option>
 </select>
 </p>
 <p>
-Scroll Speed:
+Scroll Up Speed:
 <select id="speed" onChange="save_options();report(1)">
  <option value="40000">Slowest</option>
  <option value="20000">Slower</option>
@@ -275,6 +305,18 @@ Scroll Speed:
  <option value="100">Faster</option>
  <option value="1">Fastest (Instant)</option>
 </select>
+</p>
+<p>
+<div class="down" style="clear:left;padding-right:4px;">Scroll Down Speed:
+<select id="speed2" onChange="save_options();report(9)">
+ <option value="40000">Slowest</option>
+ <option value="20000">Slower</option>
+ <option value="2000">Slow</option>
+ <option value="1000">Fast</option>
+ <option value="100">Faster</option>
+ <option value="1">Fastest (Instant)</option>
+</select>
+</div>
 </p>
 <p>
 <div id="textChange" style="float:left;padding-right:4px;">Appear Distance:</div>
@@ -353,13 +395,20 @@ Page Bounce:
 <button id="restore" onClick="defaults()"></button>
 <button id="author" onClick="authorsettings()"></button>
 <p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
-<p style="padding-top:60px;">Press Alt+Up / Alt+Down or Home / End on a page to scroll with just your keyboard!</p>
+<p style="padding-top:60px;">Press Alt+T/Alt+B or Home/End on a page to scroll with just your keyboard!</p>
 <p><strong>Do you speak multiple languages? Please help me translate this extension! <a href="mailto:sttb@codysherman.com">Email me!</a></strong></p>
 <div id="bottomNav">
 <a href="http://scrolltotopbutton.tumblr.com/" target="_blank"><div id="release"></div></a>
 <a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank"><div id="source"></div></a>
 <a href="http://codysherman.com/" target="_blank"><div id="cody"></div></a>
 </div>
+<div style="border:1px #434b52 solid;height:60px;">
+<div style="float:left;padding-left:3px;width:440px;padding-top:3px;">A fan of Scroll to Top Button? Donate! You can donate whatever amount you would like, and I would appreciate anything I can get to help pay for college and stuffs :) <a href="http://scrolltotopbutton.tumblr.com/donate" target="_blank">Need convincing?</a></div>
+<div style="padding-top:12px;padding-left:10px;float:left;">
+<a href="http://scrolltotopbutton.tumblr.com/donate-amount-check"><img src="/images/donate.png" alt="Donate"/></a>
+</div>
+</div>
+
 	</div>
 </div>
 <script>

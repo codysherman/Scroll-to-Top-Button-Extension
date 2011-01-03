@@ -7,11 +7,11 @@
 *
 * Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top in no time!
 *
-* To install: https://chrome.google.com/extensions/detail/chiikmhgllekggjhdfjhajkfdkcngplp
+* To install: https://chrome.google.com/webstore/detail/chiikmhgllekggjhdfjhajkfdkcngplp
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.4.2
+*Version: 4.6.0
 -----------------------*/
 
 STTB();
@@ -24,6 +24,9 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	else if (window.location.href.indexOf('http://www.tumblr.com/tumblelog/') != -1) {
 		$('#return_to_top').remove();
 	}
+	else if (window.location.href.indexOf('http://www.tumblr.com/messages') != -1) {
+		$('#return_to_top').remove();
+	}
 	else if (window.location.href.indexOf('http://www.tumblr.com/tagged/') != -1) {
 		$('#return_to_top').remove();
 	}
@@ -33,15 +36,17 @@ if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
 	else if (window.location.href.indexOf('http://www.tumblr.com/likes') != -1) {
 		$('#return_to_top').remove();
 	}
-	else if (window.location.href.indexOf('http://www.tumblr.com/messages') != -1) {
-		$('#return_to_top').remove();
-	}
+}
+
+if (window.location.href.indexOf('http://scrolltotopbutton.tumblr.com/donationcompleted') != -1) {
+	chrome.extension.sendRequest({greeting: "donated"});
 }
 
 function STTB() {
 // Asks background.html for [LocalStorage] settings.
 chrome.extension.sendRequest({greeting: "settings"}, function(response) {
 var speed = parseInt(response.speed);
+var speed2 = parseInt(response.speed2);
 var distance = parseInt(response.distance);
 var flipDistance = parseInt(response.distance);
 var size = response.size;
@@ -53,6 +58,7 @@ var transparency = response.transparency;
 
 if (stbb == "dual"){
 var imgURL=chrome.extension.getURL("arrows/dual/"+arrow+".png");
+var imgURL2=chrome.extension.getURL("arrows/dualdown/"+arrow+".png");
 }
 else{
 var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
@@ -142,9 +148,9 @@ else if ((location == "BC") && (stbb == "dual")) {
 
 if(stbb=="dual"){
    $("body").prepend('<img id=STTBimg2 />');
-	$("#STTBimg2").rotate(-180);
+	//$("#STTBimg2").rotate(-180);
 STTBimg2.style.opacity = transparency;
-STTBimg2.src=imgURL;
+STTBimg2.src=imgURL2;
 STTBimg2.style.position = 'fixed';
 STTBimg2.style.width = size;
 STTBimg2.style.height = 'auto';
@@ -257,19 +263,19 @@ $("#STTBimg2").hover(function(){
 
 // Calls, and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
    $("#STTBimg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"up"});
-   $("#STTBimg2").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
+   $("#STTBimg2").scrollToTop({speed:speed2, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
 
 } //Keyboard Only
    
-   shortcut.add("Alt+Down", function() {
-       DOWN(speed, scroll);
+   shortcut.add("Alt+B", function() {
+       DOWN(speed2, scroll);
    });
    shortcut.add("End", function() {
-       DOWN(speed, scroll);
+       DOWN(speed2, scroll);
        },{
        'disable_in_input':true
    });
-   shortcut.add("Alt+Up", function() {
+   shortcut.add("Alt+T", function() {
        UP(speed, scroll);
    });
    shortcut.add("Home", function() {
@@ -289,6 +295,12 @@ $(document).ready(function($) {
 		REMOVE();
 	}
 	else if (window.location.href.indexOf('docs.google.com/') != -1) {
+		REMOVE();
+	}
+	else if (window.location.href.indexOf('calendar.google.com/') != -1) {
+		REMOVE();
+	}
+	else if (window.location.href.indexOf('spreadsheets.google.com/') != -1) {
 		REMOVE();
 	}
 
