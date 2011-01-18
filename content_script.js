@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 4.6.0
+*Version: 4.6.3
 -----------------------*/
 
 STTB();
@@ -207,11 +207,9 @@ else if (location == "BC") {
 		STTBimg2.style.margin = adjust;
 	}
 
-CheckIt();
-
 }
 
-if((stbb=="flip") || (stbb=="dual")){distance=0;};
+if((stbb=="flip") || (stbb=="dual")){distance=0;CheckIt();};
 
 if (stbb != "keys"){
 var head = document.getElementsByTagName('head')[0],
@@ -297,18 +295,24 @@ $(document).ready(function($) {
 	else if (window.location.href.indexOf('docs.google.com/') != -1) {
 		REMOVE();
 	}
-	else if (window.location.href.indexOf('calendar.google.com/') != -1) {
+	else if (window.location.href.indexOf('docs0.google.com/') != -1) {
+		REMOVE();
+	}
+	else if (window.location.href.indexOf('google.com/calendar') != -1) {
 		REMOVE();
 	}
 	else if (window.location.href.indexOf('spreadsheets.google.com/') != -1) {
 		REMOVE();
 	}
+	else if (window.location.href.indexOf('spreadsheets0.google.com/') != -1) {
+		REMOVE();
+	}
 
 function REMOVE() {
-$('#STTBimg').fadeTo('fast', 0.0, function() {
+$('#STTBimg').fadeTo('medium', 0.0, function() {
       $(this).remove();
 });
-$('#STTBimg2').fadeTo('fast', 0.0, function() {
+$('#STTBimg2').fadeTo('medium', 0.0, function() {
       $(this).remove();
 });
 watch();
