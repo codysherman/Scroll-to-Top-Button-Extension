@@ -58,7 +58,6 @@ var transparency = response.transparency;
 
 if (stbb == "dual"){
 var imgURL=chrome.extension.getURL("arrows/dual/"+arrow+".png");
-var imgURL2=chrome.extension.getURL("arrows/dualdown/"+arrow+".png");
 }
 else{
 var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
@@ -148,9 +147,9 @@ else if ((location == "BC") && (stbb == "dual")) {
 
 if(stbb=="dual"){
    $("body").prepend('<img id=STTBimg2 />');
-	//$("#STTBimg2").rotate(-180);
+	$("#STTBimg2").rotate(-180);
 STTBimg2.style.opacity = transparency;
-STTBimg2.src=imgURL2;
+STTBimg2.src=imgURL;
 STTBimg2.style.position = 'fixed';
 STTBimg2.style.width = size;
 STTBimg2.style.height = 'auto';
