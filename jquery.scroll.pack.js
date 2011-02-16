@@ -9,113 +9,133 @@
 * For usage instructions and version updates to go http://blog.ph-creative.com/post/jquery-plugin-scroll-to-top-v3.aspx
 * 
 * Version: 3.1, 29/07/2010
+*
+* Modified for Scroll to Top Button by Cody Sherman
+* http://codysherman.com/
+*
+* Modified for version 5.0.0
 -----------------------*/
+// Functions for going either UP or DOWN
 function UP(speed,ease){
-$("html, body").animate({scrollTop:"0"},speed,ease,function() {inProgress="no"});
+    $("html, body").animate({scrollTop:"0"},speed,ease,function() {inProgress="no"});
 }
 function DOWN(speed,ease){
-$("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {inProgress="no"});
+    $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {inProgress="no"});
 }
+
+// Craig's Scroll to Top Plugin with modifications
 (function($){
-	$.fn.extend({scrollToTop:function(options){
+    $.fn.extend({
+        scrollToTop:function(options){
 
-	var defaults={speed:"slow",ease:"jswing",start:0}
+            var defaults={speed:"slow",ease:"jswing",start:0}
 
-	var options=$.extend(defaults,options);
+            var options=$.extend(defaults,options);
 
-	return this.each(function(){var o=options;var scrollDiv=$(this);
+            return this.each(function(){
+        
+                var o=options;var scrollDiv=$(this);
 
-	$(this).hide().removeAttr("href").css("cursor","pointer");
+                $(this).hide().removeAttr("href").css("cursor","pointer");
 
-	if(o.stbb=="flip"){
-	if($(window).scrollTop()>=o.flipDistance){
-		$("#STTBimg").rotateAnimation(0);
-		o.direction="up";
-	};
+                // Allows the button to change directions when in "Flip" mode on page load
+                if(o.stbb=="flip"){
+                    if($(window).scrollTop()>=o.flipDistance){
+                        $("#STTBimg").rotateAnimation(0);
+                        o.direction="up";
+                    };
 
-	if($(window).scrollTop()<"200"){
-		$("#STTBimg").rotateAnimation(-180);
-		o.direction="down";
-	};
-};
+                    if($(window).scrollTop()<"200"){
+                        $("#STTBimg").rotateAnimation(-180);
+                        o.direction="down";
+                    };
+                };
 
-	if($(window).scrollTop()>=o.start){
+                // Checks whether button should be visable at page load
+                if($(window).scrollTop()>=o.start){
+                    $(this).fadeIn("slow");
+                }
+                
+                // Checks whether button should be visable/flipped on scroll
+                $(window).scroll(function(){
+                    if($(window).scrollTop()>=o.start){
+                        $(scrollDiv).fadeIn("slow");
+                    }else{
+                        $(scrollDiv).fadeOut("slow");
+                    }
 
-	$(this).fadeIn("slow");}$(window).scroll(function(){
+                    if(o.stbb=="flip"){
+                        if($(window).scrollTop()>=o.flipDistance){
+                            $("#STTBimg").rotateAnimation(0);
+                            o.direction="up";
+                        };
 
-	if($(window).scrollTop()>=o.start){
-	$(scrollDiv).fadeIn("slow");}else{
-	$(scrollDiv).fadeOut("slow");
-	}
+                        if($(window).scrollTop()<o.flipDistance){
+                            $("#STTBimg").rotateAnimation(-180);
+                            o.direction="down";
+                        };
+                    };
+                });
 
-if(o.stbb=="flip"){
-	if($(window).scrollTop()>=o.flipDistance){
-		$("#STTBimg").rotateAnimation(0);
-		o.direction="up";
-	};
+                inProgress="no";
+            
+                //Rules specific to the button when it is bi-directional
+                if((o.stbb=="flip") || (o.stbb=="dual")){
+                    scrollDiv.click(function(event){
+                    
+                        // Stops the scrolling if button is clicked a second time.
+                        if(inProgress=="yes"){
+                            $("html, body").stop();
+                            inProgress="no";
+                        }
 
-	if($(window).scrollTop()<o.flipDistance){
-		$("#STTBimg").rotateAnimation(-180);
-		o.direction="down";
-	};
-};
+                        // Runs the proper scroll direction function
+                        else if(o.direction=="up"){
+                            inProgress="yes";
+                            speed=o.speed;
+                            ease=o.ease;
+                            UP(speed,ease);
+                            if((o.transparency=="0.0")&&(o.stbb=="dual")){
+                                $(this).fadeTo("medium", 0.5);
+                            }
+                            else{
+                                $(this).fadeTo("medium", o.transparency);
+                            }
+                        }
+                    
+                        else if(o.direction=="down"){
+                            inProgress="yes";
+                            speed=o.speed;
+                            ease=o.ease;
+                            DOWN(speed,ease);
+                            if((o.transparency=="0.0")&&(o.stbb=="dual")){
+                                $(this).fadeTo("medium", 0.5);
+                            }
+                            else{
+                                $(this).fadeTo("medium", o.transparency);
+                            }
+                        }
+                    })
+                }
 
-});
+                // Sets up the scrolling rules when in only Scroll to Top mode
+                else if(o.stbb=="off"){
+                    scrollDiv.click(function(event){
+                        if(inProgress=="yes"){
+                            $("html, body").stop();
+                            inProgress="no";
+                        }
 
-inProgress="no";
-
-if((o.stbb=="flip") || (o.stbb=="dual")){
-	scrollDiv.click(function(event){
-		if(inProgress=="yes"){
-		$("html, body").stop();
-		inProgress="no";
-		}
-
-		else if(o.direction=="up"){
-		inProgress="yes";
-		speed=o.speed;
-		ease=o.ease;
-		UP(speed,ease);
-		if((o.transparency=="0.0")&&(o.stbb=="dual")){
-			$(this).fadeTo("medium", 0.5);
-			}
-		else{
-			$(this).fadeTo("medium", o.transparency);
-			}
-		}
-
-		else if(o.direction=="down"){
-		inProgress="yes";
-		speed=o.speed;
-		ease=o.ease;
-		DOWN(speed,ease);
-		if((o.transparency=="0.0")&&(o.stbb=="dual")){
-			$(this).fadeTo("medium", 0.5);
-			}
-		else{
-			$(this).fadeTo("medium", o.transparency);
-			}
-		}
-	})
-}
-
-else if(o.stbb=="off"){
-	scrollDiv.click(function(event){
-		if(inProgress=="yes"){
-		$("html, body").stop();
-		inProgress="no";
-		}
-
-		else{
-		inProgress="yes";
-		speed=o.speed;
-		ease=o.ease;
-		UP(speed,ease);
-		}
-	})
-}
-
-});
-}
-});
-})(jQuery);
+                        else{
+                            inProgress="yes";
+                            speed=o.speed;
+                            ease=o.ease;
+                            UP(speed,ease);
+                        }
+                    })
+                }
+            });
+        }
+    });
+})
+(jQuery);

@@ -1,6 +1,6 @@
 <script>
 
-// Creates options defaults in case user hasn't set them yet.
+// Creates options defaults in case user hasn't set them yet
   if (!localStorage["scroll_speed"]) {
     localStorage["scroll_speed"] = 1000;
   }
@@ -16,9 +16,6 @@
   if (!localStorage["arrow"]) {
     localStorage["arrow"] = "arrow_blue";
   }
-  /*if (!localStorage["scroll"]) {
-    localStorage["scroll"] = "jswing";
-  }*/
   if (!localStorage["location"]) {
     localStorage["location"] = "TR";
   }
@@ -27,6 +24,9 @@
   }
   if (!localStorage["transparency"]) {
     localStorage["transparency"] = "0.5";
+  }
+  if (!localStorage["contextmenu"]) {
+    localStorage["contextmenu"] = "on";
   }
   if (!localStorage["loadcount"]) {
     localStorage["loadcount"] = "0";
@@ -37,6 +37,13 @@
       localStorage["bothered"]="1";
     }
   }
+  if ((localStorage["loadcount"]>=3) && (localStorage["bothered2"]!="1")) {
+    chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/STTBdonate',selected:false});
+    localStorage["bothered2"]="1";
+  }
+  if ((localStorage["loadcount"]<=2) && (localStorage["bothered2"]!="1"))  {
+    localStorage["bothered2"]="1";
+  }
   if (localStorage["stbb"]=="on") {
     localStorage["stbb"] = "flip";
   }
@@ -44,11 +51,12 @@
   chrome.tabs.create({url:'/options.html',selected:false});
   }
 
+// Counts number of times Chrome has been opened to load donation message after certain amount
 loadcount=localStorage["loadcount"];
 loadcount++;
 localStorage["loadcount"]=loadcount;
 
-// Message passer to give [LocalStorage] settings to content_script.js which is not allowed access to [LocalStorage].
+// Message passer to give [LocalStorage] settings to content_script.js because it is not allowed access to [LocalStorage]
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.greeting == "settings")
@@ -62,3 +70,4 @@ chrome.extension.onRequest.addListener(
 
 
 </script>
+<script src="context_menu.js"></script>

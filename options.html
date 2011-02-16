@@ -1,5 +1,5 @@
 <html>
-<head><title>Scroll to Top Button Options</title>
+<head><title>Scroll To Top Button Options</title>
 
 
 <link rel="stylesheet" type="text/css" href="/style.css">
@@ -13,9 +13,11 @@ function defaults() {
   loadcount=localStorage["loadcount"];
   donated=localStorage["donated"];
   bothered=localStorage["bothered"];
+  bothered2=localStorage["bothered2"];
   localStorage.clear();
   localStorage["loadcount"]=loadcount;
   localStorage["bothered"]=bothered;
+  localStorage["bothered2"]=bothered2;
   localStorage["donated"]=donated;
   localStorage["latest"]="2";
   restore_options();
@@ -23,6 +25,7 @@ function defaults() {
   textChange();
 }
 
+// Sets options to my personal setup
 function authorsettings() {
   localStorage["scroll_speed"]="1000";
   localStorage["scroll_speed2"]="1000";
@@ -31,6 +34,7 @@ function authorsettings() {
   localStorage["location"]="CR";
   localStorage["stbb"]="dual";
   localStorage["transparency"]="0.5";
+  localStorage["contextmenu"]="on";
   restore_options();
   save_options();
   textChange();
@@ -73,6 +77,10 @@ function save_options() {
   var select = document.getElementById("transparency");
   var transparency = select.children[select.selectedIndex].value;
   localStorage["transparency"] = transparency;
+  
+  var select = document.getElementById("contextmenu");
+  var contextmenu = select.children[select.selectedIndex].value;
+  localStorage["contextmenu"] = contextmenu;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -80,6 +88,22 @@ function save_options() {
   setTimeout(function() {
     status.innerHTML = "";
   }, 3000);
+}
+
+// Message to restart Chrome when setting change requires it
+var restartChange = "false";
+function restart() {
+  if (restartChange=="false") {
+    var status = document.getElementById("restartstatus");
+    status.innerHTML = "Restart Google Chrome to take effect.";
+    restartChange = "true";
+  }
+  else if (restartChange=="true") {
+    var status = document.getElementById("restartstatus");
+    status.innerHTML = "";
+    restartChange = "false";
+  }
+  
 }
 
 // Restores select box state to saved value from localStorage.
@@ -96,14 +120,14 @@ function restore_options() {
       break;
     }
   }
-  var favorite = localStorage["scroll_speed2"];
-  if (!favorite) {
-    favorite = 1000;
+  var favorite9 = localStorage["scroll_speed2"];
+  if (!favorite9) {
+    favorite9 = 1000;
   }
   var select = document.getElementById("speed2");
   for (var i = 0; i < select.children.length; i++) {
     var child = select.children[i];
-    if (child.value == favorite) {
+    if (child.value == favorite9) {
       child.selected = "true";
       break;
     }
@@ -192,6 +216,18 @@ function restore_options() {
       break;
     }
   }
+   var favorite10 = localStorage["contextmenu"];
+  if (!favorite10) {
+    favorite10 = "on";
+  }
+  var select = document.getElementById("contextmenu");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite10) {
+      child.selected = "true";
+      break;
+    }
+  }
   save_options();
 }
 
@@ -223,6 +259,9 @@ function report(option) {
 	}
 	else if (option == 9) {
 		_gaq.push(['_trackEvent', 'Scroll Speed Down', localStorage["scroll_speed2"]]);
+	}
+	else if (option == 10) {
+		_gaq.push(['_trackEvent', 'Context Menu', localStorage["contextmenu"]]);
 	}
 }
 
@@ -391,21 +430,29 @@ Page Bounce:
 </select>
 </div>
 </p>
+<p><p style="float:left; margin-top:0px; padding-right:4px;">
+Context (Right-click) Menu:</p>
+<select id="contextmenu" style="float:left; margin-top:0px;" onChange="save_options();restart();report(10)">
+ <option value="on">On</option>
+ <option value="off">Off</option>
+</select>
+<p id="restartstatus" style="float:left; font-size:.9em; line-height:.5; margin-top:0px; padding:6px 0 0 10px;"></p>
+</p>
 <script type="text/javascript">$(document).ready(textChange());</script>
-<button id="restore" onClick="defaults()"></button>
-<button id="author" onClick="authorsettings()"></button>
+<button id="restore" title="Restore Defaults" onClick="defaults()"></button>
+<button id="author" title="Author's Settings" onClick="authorsettings()"></button>
 <p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
-<p style="padding-top:50px;"><strong><center>Press Alt+T/Alt+B or Home/End on a page to scroll with just your keyboard!</center></strong></p>
+<p style="padding-top:10px;clear:left;"><strong><center>Press Alt+T/Alt+B or Home/End on a page to scroll with just your keyboard!</center></strong></p>
 <!--<p><strong>Do you speak multiple languages? Please help me translate this extension! <a href="mailto:sttb@codysherman.com">Email me!</a></strong></p>-->
 <div id="bottomNav">
-<a href="http://scrolltotopbutton.tumblr.com/" target="_blank"><div id="release"></div></a>
-<a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" target="_blank"><div id="source"></div></a>
-<a href="http://codysherman.com/" target="_blank"><div id="cody"></div></a>
+<a href="http://scrolltotopbutton.tumblr.com/" title="Release Notes" target="_blank"><div id="release"></div></a>
+<a href="http://github.com/codysherman/Scroll-to-Top-Button-Extension" title="Source Code" target="_blank"><div id="source"></div></a>
+<a href="http://codysherman.com/" title="By Cody Sherman" target="_blank"><div id="cody"></div></a>
 </div>
 <div style="border:1px #434b52 solid;height:60px;">
-<div style="float:left;padding-left:3px;width:440px;padding-top:3px;">A fan of Scroll to Top Button? Donate! You can donate whatever amount you would like, and I would appreciate anything I can get to help pay for college and stuffs :) <a href="http://scrolltotopbutton.tumblr.com/STTBdonate" target="_blank">Need convincing?</a></div>
+<div style="float:left;padding-left:3px;width:440px;padding-top:3px;">A fan of Scroll To Top Button? Donate! You can donate whatever amount you would like, and I would appreciate anything I can get to help pay for college and stuffs :) <a href="http://scrolltotopbutton.tumblr.com/donate" target="_blank">More reasons to donate!</a></div>
 <div style="padding-top:12px;padding-left:10px;float:left;">
-<a href="http://scrolltotopbutton.tumblr.com/STTBdonate"><img src="/images/donate.png" alt="Donate"/></a>
+<a href="http://scrolltotopbutton.tumblr.com/donate" title="Donate Now" target="_blank"><img src="/images/donate.png" alt="Donate"/></a>
 </div>
 </div>
 
