@@ -1,6 +1,6 @@
 {
   "name": "Scroll To Top Button",
-  "version": "5.0",
+  "version": "5.0.1",
   "description": "Adds a scroll to top or bottom button.",
   "icons": {"16": "icons/icon16.png",
       "32": "icons/icon32.png",
@@ -9,7 +9,7 @@
   "options_page": "options.html",
   "background_page": "background.html",
   "content_scripts": [
-    { "matches": ["<all_urls>"], "js": ["libraries/jquery-1.5.min.js", "libraries/jquery.easing.js", "libraries/jQueryRotate.js", "jquery.scroll.pack.js", "content_script.js", "libraries/shortcut.js"] }
+    { "matches": ["<all_urls>"], "js": ["libraries/jquery.js", "libraries/jquery.easing.js", "libraries/jQueryRotate.js", "jquery.scroll.pack.js", "content_script.js", "libraries/shortcut.js"] }
   ],
   "permissions": [
 	"tabs", "contextMenus"
