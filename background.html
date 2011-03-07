@@ -33,12 +33,12 @@
   }
   if (!localStorage["donated"]) {
     if ((localStorage["loadcount"]>=40) && (localStorage["bothered"]!="1")) {
-      chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/STTBdonate',selected:false});
+      chrome.tabs.create({url:'http://scrolltotopbutton.com/STTBdonate',selected:false});
       localStorage["bothered"]="1";
     }
   }
   if ((localStorage["loadcount"]>=3) && (localStorage["bothered2"]!="1")) {
-    chrome.tabs.create({url:'http://scrolltotopbutton.tumblr.com/post/3324753379/welcome-to-version-5-0'});
+    chrome.tabs.create({url:'http://scrolltotopbutton.com/post/3324753379/welcome-to-version-5-0'});
     localStorage["bothered2"]="1";
   }
   if ((localStorage["loadcount"]<=2) && (localStorage["bothered2"]!="1"))  {

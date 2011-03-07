@@ -11,9 +11,10 @@
 * Version: 3.1, 29/07/2010
 *
 * Modified for Scroll to Top Button by Cody Sherman
+* http://scrolltotopbutton.com/
 * http://codysherman.com/
 *
-* Modified for version 5.0.0
+* Modified for version 5.0.2
 -----------------------*/
 // Functions for going either UP or DOWN
 function UP(speed,ease){

@@ -7,11 +7,13 @@
 *
 * Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top!
 *
+* http://scrolltotopbutton.com
+*
 * To install: https://chrome.google.com/webstore/detail/chiikmhgllekggjhdfjhajkfdkcngplp
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 5.0.0
+*Version: 5.0.2
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {
@@ -45,7 +47,7 @@ function CheckIt() {
 }
 
 // Checks to see if person donates, to disable the message asking for donation later.
-if (window.location.href.indexOf('http://scrolltotopbutton.tumblr.com/donationcompleted') != -1) {
+if (window.location.href.indexOf('http://scrolltotopbutton.com/donationcompleted') != -1) {
 	chrome.extension.sendRequest({greeting: "donated"});
 }
 
