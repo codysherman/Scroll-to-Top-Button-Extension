@@ -9,8 +9,6 @@
 *
 * http://scrolltotopbutton.com
 *
-* To install: https://chrome.google.com/webstore/detail/chiikmhgllekggjhdfjhajkfdkcngplp
-*
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
 *Version: 5.0.2
