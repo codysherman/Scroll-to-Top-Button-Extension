@@ -1,6 +1,10 @@
 {
   "name": "Scroll To Top Button",
+<<<<<<< HEAD
   "version": "6.0.1",
+=======
+  "version": "5.0.1",
+>>>>>>> 7363bcfc7dd004dc350bd7291f11f2ebaf30839f
   "description": "Adds a scroll to top or bottom button.",
   "icons": {"16": "icons/Icon-16.png",
       "32": "icons/Icon-32.png",
