@@ -42,12 +42,12 @@ function DOWN(speed,ease){
                 // Allows the button to change directions when in "Flip" mode on page load
                 if(o.stbb=="flip"){
                     if($(window).scrollTop()>=o.flipDistance){
-                        $("#STTBimg").rotateAnimation(0);
+                        $("#STTBimg").rotate({animateTo:0});
                         o.direction="up";
                     };
 
                     if($(window).scrollTop()<"200"){
-                        $("#STTBimg").rotateAnimation(-180);
+                        $("#STTBimg").rotate({animateTo:-180});
                         o.direction="down";
                     };
                 };
@@ -67,12 +67,12 @@ function DOWN(speed,ease){
 
                     if(o.stbb=="flip"){
                         if($(window).scrollTop()>=o.flipDistance){
-                            $("#STTBimg").rotateAnimation(0);
+                            $("#STTBimg").rotate({animateTo:0});
                             o.direction="up";
                         };
 
                         if($(window).scrollTop()<o.flipDistance){
-                            $("#STTBimg").rotateAnimation(-180);
+                            $("#STTBimg").rotate({animateTo:-180});
                             o.direction="down";
                         };
                     };

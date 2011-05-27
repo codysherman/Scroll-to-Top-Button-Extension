@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 5.0.2
+*Version: 6.1.0
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {
@@ -73,6 +73,7 @@ function STTB() {
         var location = response.location;
         var stbb = response.stbb;
         var transparency = response.transparency;
+        var shortcuts = response.shortcuts;
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
@@ -293,12 +294,22 @@ function STTB() {
         $("#STTBimg2").scrollToTop({speed:speed2, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
 
         //Adds keyboard commands using shortcut.js
-        shortcut.add("Alt+B", function() {
-            DOWN(speed2, scroll);
-        });
-        shortcut.add("Alt+T", function() {
-            UP(speed, scroll);
-        });
+        if (shortcuts == "arrows") {
+            shortcut.add("Alt+Down", function() {
+                DOWN(speed2, scroll);
+            });
+            shortcut.add("Alt+Up", function() {
+                UP(speed, scroll);
+            });
+        }
+        else if (shortcuts == "tb") {
+            shortcut.add("Alt+B", function() {
+                DOWN(speed2, scroll);
+            });
+            shortcut.add("Alt+T", function() {
+                UP(speed, scroll);
+            });
+        }
         shortcut.add("End", function() {
             DOWN(speed2, scroll);
         },{
