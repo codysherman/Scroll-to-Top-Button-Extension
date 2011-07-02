@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 6.1.0
+*Version: 6.1.2
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {
