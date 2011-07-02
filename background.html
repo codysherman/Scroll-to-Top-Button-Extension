@@ -34,24 +34,16 @@
   if (!localStorage["loadcount"]) {
     localStorage["loadcount"] = "0";
   }
-  if (!localStorage["donated"]) {
-    if ((localStorage["loadcount"]>=40) && (localStorage["bothered"]!="1")) {
-      chrome.tabs.create({url:'http://scrolltotopbutton.com/STTBdonate',selected:false});
+  if ((localStorage["loadcount"]=="40") && (localStorage["bothered"]!="1")) {
       localStorage["bothered"]="1";
-    }
-  }
-  if ((localStorage["bothered2"]!="2")) {
-    chrome.tabs.create({url:'http://scrolltotopbutton.com/post/5310918199'});
-    localStorage["bothered2"]="2";
-  }
-  if ((localStorage["loadcount"]<=2) && (localStorage["bothered2"]!="2"))  {
-    localStorage["bothered2"]="2";
+      chrome.tabs.create({url:'http://scrolltotopbutton.com/STTBdonate',selected:false});
   }
   if (localStorage["stbb"]=="on") {
     localStorage["stbb"] = "flip";
   }
   if (localStorage["latest"]!="2"){
-  chrome.tabs.create({url:'/options.html',selected:false});
+    localStorage["latest"]="2";
+    chrome.tabs.create({url:'/options.html',selected:false});
   }
 
 // Counts number of times Chrome has been opened to load donation message after certain amount

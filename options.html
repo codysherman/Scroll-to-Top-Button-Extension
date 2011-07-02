@@ -470,7 +470,7 @@ Context (Right-click) Menu:</p>
 <button id="restore" title="Restore Defaults" onClick="defaults()"></button>
 <button id="author" title="Author's Settings" onClick="authorsettings()"></button>
 <p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
-<p style="padding-top:10px;clear:left;"><strong><center>Press Alt+T/Alt+B or Home/End on a page to scroll with just your keyboard!</center></strong></p>
+<p style="padding-top:10px;clear:left;"><strong><center>Pick a shortcut above or use Home/End keys on a page to scroll with just your keyboard!</center></strong></p>
 <!--<p><strong>Do you speak multiple languages? Please help me translate this extension! <a href="mailto:sttb@codysherman.com">Email me!</a></strong></p>-->
 <div id="bottomNav">
 <a href="http://scrolltotopbutton.com/" title="Release Notes" target="_blank"><div id="release"></div></a>
@@ -488,8 +488,7 @@ Context (Right-click) Menu:</p>
 </div>
 <script>
 if (localStorage["latest"]!="2"){
-	document.getElementById('welcome').style.display="inline";
-	localStorage["latest"]="2";
+  localStorage["latest"]="2";
 };
 </script>
 </body>
